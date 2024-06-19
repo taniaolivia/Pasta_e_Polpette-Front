@@ -1,0 +1,129 @@
+
+body {
+    font-family: 'Rhum Raisin', sans-serif;
+    color: #191919;
+  }
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #eaeaea;
+  
+    .logo img {
+      height: 50px;
+    }
+  
+    .menu-icon {
+      display: none;
+      cursor: pointer;
+  
+      .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        background-color: #ff0000;
+        transition: all 0.3s;
+      }
+    }
+  
+    .navigation {
+      flex-grow: 1;
+      text-align: center;
+  
+      ul {
+        list-style: none;
+        margin: 15px;
+        padding: 0;
+        display: flex;
+        justify-content: flex-end;
+        font-family: 'Rhum Raisin', sans-serif;
+  color: #191919;
+  align-items: center;
+
+        gap: 20px;
+  
+        li {
+            
+          a {
+            text-decoration: none;
+            color: #000;
+            font-weight: bold;
+            transition: color 0.3s;
+            font-family: 'Rhum Raisin', sans-serif;
+  
+            &:hover {
+              color: #ff0000;
+            }
+          }
+        }
+      }
+    }
+  
+    .order-button {
+      button {
+        background-color: #ff0000;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 25px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+  
+        &:hover {
+          background-color: #cc0000;
+        }
+      }
+    }
+  
+    @media (max-width: 600px) {
+      .menu-icon {
+        display: block;
+      }
+  
+      .navigation {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+  
+        ul {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 10px;
+  
+          li {
+            width: 100%;
+            padding: 10px 0;
+  
+            a {
+              display: block;
+              width: 100%;
+            }
+          }
+        }
+      }
+  
+      .order-button {
+        display: none;
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+  
+        button {
+          width: 100%;
+        }
+      }
+  
+      .navigation.active,
+      .order-button.active {
+        display: flex;
+
+      }
+    }
+  }
+  
