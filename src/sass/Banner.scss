@@ -1,0 +1,231 @@
+
+.banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 20px 0 20px;
+    flex-wrap: wrap; 
+    position: relative;
+ } 
+  .text-container {
+    flex: 1;
+    margin: 0 20px 0 2em;
+    font-family: 'Rhum Raisin', sans-serif;
+    color: #191919;
+  }
+  
+  .image-container {
+    width: 100%;
+    max-width: 300px;
+    display: flex;
+    margin-right: 45px;
+
+    img {
+        width: 208px;
+        height: auto;
+        border-radius: 0;
+      }
+  }
+  
+  .image-container1 {
+    max-width: 73%;
+    display: flex;
+    height: 74px;
+    justify-content: space-between;
+    align-content: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: center;
+  }
+    
+  .image-wrapper {
+    text-align: center;
+  }
+  
+  .image-wrapper1 img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .image-wrapper img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .image-caption {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+  }
+  
+  .first-image img {
+    width: 120px;
+    position: absolute;
+    right: 0;
+    bottom: 7em;
+  }
+  
+  .second-image img {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+  }
+  
+  .layer img {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    position: absolute;
+    top: 3em;
+    left: 1em;
+  }
+  
+  .orange img {
+    width: 100%;
+    max-width: 80px;
+    height: auto;
+    position: absolute;
+    top: 30%;
+    left: 30em;
+  }
+  
+  .lovers img {
+    width: 100%;
+    height: auto;
+    max-width: 600px;
+  }
+  
+  .line img {
+    width: 502px;
+    margin-bottom: 42px;
+  }
+  
+  .button-group {
+    display: flex;
+    flex-direction: row;
+    gap: 2px;
+    
+    
+  }
+  
+  .btn {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 20px ;
+    border: none;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+  
+    &.discover-btn {
+      background-color: #ff0000;
+      color: #fff;
+      font-family: 'Rhum Raisin', sans-serif;
+      font-size: 16px;
+    }
+  
+    &.icon-btn {
+      background-color: #ff0000;
+      color: #ff0000;
+      width: 40px;
+      height: 40px;
+      border: 2px solid #ff0000;
+      padding: 0;
+  
+      .icon {
+        width: 15px;
+        height: 15px;
+      }
+    }
+  
+    &:hover {
+      background-color: #ffcccc;
+    }
+  }
+  
+  .desktop {
+    display: block;
+  }
+
+  .mobile {
+    display: none;
+  }
+
+
+  /* Media Queries for Responsiveness */
+  @media screen and (max-width: 799px) {
+    .desktop {
+        display: none;
+    }
+
+    .mobile {
+        display: block;
+    }
+
+    .banner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+
+  
+    .text-container {
+        flex: 1;
+       
+        font-family: 'Rhum Raisin', sans-serif;
+        color: #191919;
+      }
+  
+    .button-group {
+      width: 100%;
+      justify-content: flex-start;
+      margin-top: 20px;
+      flex-direction: column;
+    }
+
+    .orange img {
+        width: 100%;
+        max-width: 80px;
+        height: auto;
+        position: absolute;
+        top: 30%;
+        left: 20em;
+      }
+  
+    .image-container {
+      width: 100%;
+      margin-top: 20px;
+      flex-direction: row;
+    }
+  
+    .image-container1,
+    .image-container2 {
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;  
+    }
+
+    .second-image img {
+        width: 280px;
+        max-width: 182px;
+        height: auto;
+    }
+
+    .lovers img {
+        width: 321px;
+      }
+
+      .line img {
+        width: 302px;
+        margin-bottom: 42px;
+      }
+
+      .btn-mob{
+        display: flex;
+        flex-direction: row;
+        margin-top: 22px;
+        justify-content: space-around;
+      }
+  }
+  

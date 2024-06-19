@@ -1,0 +1,220 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    
+    position: relative;
+    padding: 10px 20px;
+    background-color: #fff;
+
+    .fl{
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    .fl1{
+        display: flex;
+        flex-direction: row;
+        align-items: self-end;
+        justify-content: center;
+    }
+
+
+    
+
+  
+    .container {
+        display: flex;
+        flex-direction: column;
+
+        width: 300px;
+
+    }
+
+    .row {
+        display:flex;
+        padding: 5px;
+        flex-direction: row;
+    }
+
+    .row1 {
+        display:flex;
+        padding: 5px;
+        flex-direction: row;
+        align-items: flex-end;
+    }
+
+    .laye {
+        width: 100%;
+        max-width: 50px;
+        height: auto;
+        position: absolute;
+        top: 10%;
+        left: 0em;
+    }
+
+    .footerImage{
+        width: 100%;
+        max-width: 40px;
+        height: auto;
+        position: absolute;
+        top: 10%;
+        left: 64em; 
+    }
+
+    .button-group {
+        display: flex;
+        flex-direction: row;
+        gap: 1px;
+        
+        
+      }
+      
+      .btn {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 10px 20px ;
+        border: none;
+        cursor: pointer;
+        border-radius: 50px;
+        transition: background-color 0.3s ease;
+      
+        &.discover-btn {
+          background-color: #fff;
+          color: #ff0000;
+          font-family: 'Rhum Raisin', sans-serif;
+          font-size: 16px;
+        }
+      
+        &.icon-btn {
+          background-color: #fff;
+          color: #ff0000;
+          width: 40px;
+          height: 40px;
+         
+          padding: 0;
+      
+          .icon {
+            width: 15px;
+            height: 15px;
+          }
+        }
+      
+        &:hover {
+          background-color: #ffcccc;
+        }
+      }
+
+
+      .navigation {
+        flex-grow: 1;
+        text-align: center;
+    
+        ul {
+          list-style: none;
+          margin: 15px;
+          padding: 0;
+          display: flex;
+          justify-content: center;
+          font-family: 'Rhum Raisin', sans-serif;
+    color: #191919;
+    align-items: center;
+  
+          gap: 20px;
+    
+          li {
+              
+            a {
+              text-decoration: none;
+              color: #ff0000;
+              font-weight: bold;
+              transition: color 0.3s;
+              font-family: 'Rhum Raisin', sans-serif;
+    
+              &:hover {
+                color: #ff0000;
+              }
+            }
+          }
+        }
+      }
+    
+      .order-button {
+        button {
+          background-color: #ff0000;
+          color: #fff;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 25px;
+          font-size: 16px;
+          font-weight: bold;
+          cursor: pointer;
+          transition: background-color 0.3s;
+    
+          &:hover {
+            background-color: #cc0000;
+          }
+        }
+      }
+
+      .desktop {
+        display: block;
+      }
+    
+      .mobile {
+        display: none;
+      }
+    
+
+      /* Media Queries for Responsiveness */
+  @media screen and (max-width: 799px) {
+
+    .desktop {
+        display: none;
+    }
+
+    .mobile {
+        display: block;
+    }
+
+    .navigation {
+        flex-grow: 1;
+        text-align: center;
+    
+        ul {
+          list-style: none;
+          margin: 15px;
+          padding: 0;
+          display: flex;
+          justify-content: center;
+          font-family: 'Rhum Raisin', sans-serif;
+    color: #191919;
+    align-items: flex-start;
+    flex-direction: column;
+    
+  
+          gap: 20px;
+    
+          li {
+              
+            a {
+              text-decoration: none;
+              color: #ff0000;
+              font-weight: bold;
+              transition: color 0.3s;
+              font-family: 'Rhum Raisin', sans-serif;
+    
+              &:hover {
+                color: #ff0000;
+              }
+            }
+          }
+        }
+      }
+
+  }
+
+
+}
