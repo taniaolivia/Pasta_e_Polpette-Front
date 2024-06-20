@@ -1,19 +1,56 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
+import { getRestaurantSectionData } from '../services/Restaurant';
+import L from 'leaflet';
+import 'leaflet-defaulticon-compatibility';
+
+
+
+const defaultIcon = new L.Icon({
+    iconUrl: "../../images/marker-icon.png",
+    shadowUrl: "../../images/marker-shadow.png",
+    iconSize: [25, 41], 
+    iconAnchor: [12, 41], 
+    popupAnchor: [1, -34], 
+    shadowSize: [41, 41] 
+});
 
 
 
 
 function Restaurant() {
-    const position = [48.861, 2.370]; // Coordonnées de 90 boulevard Richard-Lenoir, 75011 Paris, France
+
+    const [restaurant, setRestaurant] = useState(null);
+    const openUberEats= () => {
+        window.open("https://www.ubereats.com/fr/store/pasta-e-polpette/q7J4GZ6zSkabzhJc0CMoFQ", "_blank");
+      }
+
+    useEffect(()=>{
+        const fetchData = async () =>{
+            const data = await getRestaurantSectionData();
+
+            if(data ){
+                setRestaurant(data.restaurant[0])
+                
+            }
+        };
+
+        fetchData();
+    },[]);
+
+    if(!restaurant){
+        return<div>Loading...</div>
+    }
+    const { title, address, access,schedule, latitude, langitude } = restaurant;
+    const position = [latitude, langitude];  
 
     return (
         <div className="restaurant">
             <img src="../images/rest.png" alt="" className="restaurant--rest" />
 
             <div className="restaurant--text">
-                <h1 className="restaurant--title">Notre <span className="red">Restaurant</span></h1>
+                <h1 className="restaurant--title">Notre &#160;<span className="red">Restaurant</span></h1>
             </div>
             <div>
                 <img src="../images/fleur.png" alt="" className="restaurant--fleur" />
@@ -31,9 +68,9 @@ function Restaurant() {
                                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                                 />
-                                <Marker position={position}  >
+                                <Marker position={position} icon={defaultIcon} >
                                     <Popup>
-                                        Paste e Polpette Paris <br /> 90 boulevard Richard-Lenoir <br />75011 Paris, France
+                                       {title} <br /> {address}
                                     </Popup>
                                 </Marker>
                             </MapContainer>
@@ -41,27 +78,27 @@ function Restaurant() {
                     </div>
 
                     <div className="contact--content right">
-                        <p className="restaurant--title">Paste e Polpette Paris</p>
+                        <p className="restaurant--title">{title}</p>
 
                         <div className="contact--content--info">
                             <div className="tel contact--icon--text">
-                                <p>90 boulevard Richard-Lenoir <br />75011 Paris, France</p>
+                                <p>{address}</p>
                             </div>
                         </div>
 
                         <div className="contact--content--info">
-                            <div className="email contact--icon--text">Accès : Métro 3, 5 et 9</div>
+                            <div className="email contact--icon--text">{access}</div>
                         </div>
 
                         <div className="contact--content--info">
                             <div className="tel contact--icon--text">
-                                <p>Ouvert tous les jours de 12H à 17H <br />et de 19H à 23H</p>
+                                <p>{schedule}</p>
                             </div>
                         </div>
 
                         <div className="contact--content--info socialMedia">
                             <div className="order-button">
-                                <button>Commander</button>
+                                <button  onClick={openUberEats}>Commander</button>
                             </div>
                         </div>
                     </div>
@@ -79,9 +116,9 @@ function Restaurant() {
                             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                         />
-                        <Marker position={position}>
+                        <Marker position={position} icon={defaultIcon}>
                             <Popup>
-                                Paste e Polpette Paris <br /> 90 boulevard Richard-Lenoir <br /> 75011 Paris, France
+                                {title} <br /> {address}
                             </Popup>
                         </Marker>
                     </MapContainer>
@@ -92,17 +129,17 @@ function Restaurant() {
 
                     <div className="contact--content--info">
                         <div >
-                            <p>90 boulevard Richard-Lenoir <br />75011 Paris, France</p>
+                            <p>{address}</p>
                         </div>
                     </div>
 
                     <div >
-                        <div className="email contact--icon--text">Accès : Métro 3, 5 et 9</div>
+                        <div className="email contact--icon--text">{access}</div>
                     </div>
 
                     <div className="contact--content--info">
                         <div >
-                            <p>Ouvert tous les jours de 12H à 17H <br />et de 19H à 23H</p>
+                            <p>{schedule}</p>
                         </div>
                     </div>
 
@@ -112,7 +149,7 @@ function Restaurant() {
 
                     <div >
                         <div className="order-button">
-                            <button>Commander</button>
+                            <button  onClick={openUberEats}>Commander</button>
                         </div>
                     </div>
                 </div>
