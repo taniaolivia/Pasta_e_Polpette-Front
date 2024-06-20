@@ -1,5 +1,6 @@
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -13,5 +14,16 @@ body {
     &--bold {
         font-family: "Montserrat";
         font-weight: bold;
+    }
+}
+
+.error-message {
+    margin: 1em 0;
+    color: #ED1F24;
+    font-family: "Montserrat";
+    font-size: 0.8em;
+
+    @media screen and (max-width: 799px) {
+        font-size: clamp(8px, 3vw, 13px);
     }
 }

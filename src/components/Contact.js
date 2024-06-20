@@ -11,11 +11,30 @@ function Contact() {
     message: ""
   })
   
+  const [errors, setErrors] = useState({});
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
+
+  const validateForm = () => {
+    const newErrors = {};
+    if (!form.firstName) newErrors.firstName = 'Prénom est requis';
+    if (!form.lastName) newErrors.lastName = 'Nom est requis';
+    if (!form.email) newErrors.email = 'E-mail est requis';
+    if (!form.telephone) newErrors.telephone = 'Numéro de téléphone est requis';
+    if (!form.subject) newErrors.subject = 'Objet est requis';
+    if (!form.message) newErrors.message = 'Message est requis';
+    setErrors(newErrors);
+
+    console.log(errors)
+
+    return Object.keys(newErrors).length === 0;
+  };
   
   const sendForm = async () => {
+    if (!validateForm()) return;
+
     const res = await sendEmail(form);
 
     if(res.message === 'Email sent successfully') {
@@ -90,35 +109,54 @@ function Contact() {
             <div className="contact--content right">
                 <div className="inputs">
                   <div className="input">
-                    <label>Prénom</label>
-                    <input type="text" name="firstName" value={form.firstName} onChange={handleChange}></input>
+                    <label>Prénom*</label>
+                    <input type="text" name="firstName" value={form.firstName} onChange={handleChange} required></input>
+                    {errors && (
+                      <span className='error-message'>{errors.firstName}</span>
+                    )}
                   </div>
                   
                   <div className="input input-nomargin">
-                    <label>Nom</label>
-                    <input type="text" name="lastName" value={form.lastName} onChange={handleChange}></input>
+                    <label>Nom*</label>
+                    <input type="text" name="lastName" value={form.lastName} onChange={handleChange} required></input>
+                    {errors && (
+                      <span className='error-message'>{errors.lastName}</span>
+                    )}
                   </div>
                 </div>
 
                 <div className="inputs">
                   <div className="input">
-                    <label>Email</label>
-                    <input type="email" name="email" value={form.email} onChange={handleChange}></input>
+                    <label>E-mail*</label>
+                    <input type="email" name="email" value={form.email} onChange={handleChange} required></input>
+                    {errors && (
+                      <span className='error-message'>{errors.email}</span>
+                    )}
                   </div>
                   
                   <div className="input input-nomargin">
-                    <label>Numéro de téléphone</label>
-                    <input type="tel" name="telephone" placeholder="+33680201422" value={form.telephone} onChange={handleChange}></input>
+                    <label>Numéro de téléphone*</label>
+                    <input type="tel" name="telephone" placeholder="+33680201422" value={form.telephone} onChange={handleChange} required></input>
+                    {errors && (
+                      <span className='error-message'>{errors.telephone}</span>
+                    )}
                   </div>
                 </div>
               
                 <div className="input">
-                  <label>Object</label>
-                  <input type="text" name="subject" value={form.subject} onChange={handleChange}></input>
+                  <label>Object*</label>
+                  <input type="text" name="subject" value={form.subject} onChange={handleChange} required></input>
+                  {errors && (
+                      <span className='error-message'>{errors.subject}</span>
+                    )}
                 </div>
+                
                 <div className="input">
-                  <label>Message</label>
-                  <input type="text" name="message" value={form.message} onChange={handleChange}></input>
+                  <label>Message*</label>
+                  <input type="text" name="message" value={form.message} onChange={handleChange} required></input>
+                  {errors && (
+                      <span className='error-message'>{errors.message}</span>
+                    )}
                 </div>
                 
                 <div className='confirm-container'>
@@ -136,37 +174,56 @@ function Contact() {
             <p className="contact--content--description">{contact.description}</p>
 
             <div className="inputs">
-                <div className="input">
-                  <label>Prénom</label>
-                  <input type="text" name="firstName" value={form.firstName} onChange={handleChange}></input>
+                  <div className="input">
+                    <label>Prénom*</label>
+                    <input type="text" name="firstName" value={form.firstName} onChange={handleChange} required></input>
+                    {errors && (
+                      <span className='error-message'>{errors.firstName}</span>
+                    )}
+                  </div>
+                  
+                  <div className="input input-nomargin">
+                    <label>Nom*</label>
+                    <input type="text" name="lastName" value={form.lastName} onChange={handleChange} required></input>
+                    {errors && (
+                      <span className='error-message'>{errors.lastName}</span>
+                    )}
+                  </div>
                 </div>
-                
-                <div className="input input-nomargin">
-                  <label>Nom</label>
-                  <input type="text" name="lastName" value={form.lastName} onChange={handleChange}></input>
-                </div>
-              </div>
 
-              <div className="inputs">
+                <div className="inputs">
+                  <div className="input">
+                    <label>E-mail*</label>
+                    <input type="email" name="email" value={form.email} onChange={handleChange} required></input>
+                    {errors && (
+                      <span className='error-message'>{errors.email}</span>
+                    )}
+                  </div>
+                  
+                  <div className="input input-nomargin">
+                    <label>Numéro de téléphone*</label>
+                    <input type="tel" name="telephone" placeholder="+33680201422" value={form.telephone} onChange={handleChange} required></input>
+                    {errors && (
+                      <span className='error-message'>{errors.telephone}</span>
+                    )}
+                  </div>
+                </div>
+              
                 <div className="input">
-                  <label>Email</label>
-                  <input type="email" name="email" value={form.email} onChange={handleChange}></input>
+                  <label>Object*</label>
+                  <input type="text" name="subject" value={form.subject} onChange={handleChange} required></input>
+                  {errors && (
+                      <span className='error-message'>{errors.subject}</span>
+                    )}
                 </div>
-                
-                <div className="input input-nomargin">
-                  <label>Numéro de téléphone</label>
-                  <input type="tel" name="telephone" placeholder="+33680201422" value={form.telephone} onChange={handleChange}></input>
+
+                <div className="input">
+                  <label>Message*</label>
+                  <input type="text" name="message" value={form.message} onChange={handleChange} required></input>
+                  {errors && (
+                      <span className='error-message'>{errors.message}</span>
+                    )}
                 </div>
-              </div>
-            
-              <div className="input">
-                <label>Object</label>
-                <input type="text" name="subject" value={form.subject} onChange={handleChange}></input>
-              </div>
-              <div className="input">
-                <label>Message</label>
-                <input type="text" name="message" value={form.message} onChange={handleChange}></input>
-              </div>
               
               <div className='confirm-container'>
                 <button className="confirm" onClick={sendForm}>Confirmer</button>

@@ -1,3 +1,7 @@
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import PrivateRoute from './components/PrivateRoute';
+import store from './redux/store';
 import Concept from './components/Concept';
 import Header from './components/Header';
 import Banner from './components/Banner';
@@ -8,8 +12,8 @@ import MenuCarousel from './components/MenuCarousel';
 import MentionLegales from './components/MentionLegales';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './sass/App.scss';
+
 
 function Home() {
   return (
@@ -27,14 +31,16 @@ function Home() {
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route exact path="/" element={<Home />} />
-        <Route path="/mentions-legales" element={<MentionLegales />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-      </Routes>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/mentions-legales" element={<MentionLegales />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/dashboard" element={<PrivateRoute element={Dashboard} />} />
+        </Routes>
+      </Router>
+    </Provider>
   );
 }
 

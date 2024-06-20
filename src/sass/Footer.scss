@@ -5,6 +5,7 @@
   padding: 10px 20px;
   background-color: #fff;
   font-family: "Rum Raisin";
+  overflow-x: hidden;
 
   .fl{
     display: flex;
@@ -221,6 +222,7 @@
     .navigation {
         flex-grow: 1;
         text-align: center;
+        margin-left: 1.5em;
     
         ul {
           list-style: none;

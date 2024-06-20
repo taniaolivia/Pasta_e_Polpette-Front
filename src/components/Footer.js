@@ -12,7 +12,7 @@ function Footer() {
                             <img src="../images/apple.png" alt="Apple" className="apple" draggable={false}/>
 
                             <div className="container">
-                                <h1 className="footer--title">Paste e Polpette</h1>
+                                <h1 className="footer--title">Pasta e Polpette</h1>
                                 
                                 <span className="footer--subtitle">Les Pasta Lovers, les vrais !</span>
                                 
@@ -77,7 +77,7 @@ function Footer() {
                         <nav className="navigation">
                             <ul>
                                 <li className="footer--title"> 
-                                    Paste e Polpette
+                                    Pasta e Polpette
                                 </li>
 
                                 <li>
