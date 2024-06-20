@@ -1,4 +1,8 @@
 function Footer() {
+    const openUberEats= () => {
+        window.open("https://www.ubereats.com/fr/store/pasta-e-polpette/q7J4GZ6zSkabzhJc0CMoFQ", "_blank");
+    }
+
     return (
         <div className="footer">
             <div className="desktop">
@@ -30,23 +34,23 @@ function Footer() {
                             <nav className="navigation">
                                 <ul>
                                     <li>
-                                        <a href="#Mentions">Mentions<br/>Légales</a>
+                                        <a href="/mentions-legales">Mentions<br/>Légales</a>
                                     </li>
                                     <li>
-                                        <a href="#Concept">Concept</a>
+                                        <a href="/#concept">Concept</a>
                                     </li>
                                     <li>
-                                        <a href="#Menu">Menu</a>
+                                        <a href="/#menu">Menu</a>
                                     </li>
                                     <li>
-                                        <a href="#Restaurant">Restaurant</a>
+                                        <a href="/#restaurant">Restaurant</a>
                                     </li>
                                     <li>
-                                        <a href="#contact">Contact</a>
+                                        <a href="/#contact">Contact</a>
                                     </li>
                                     <li>
                                         <div className="order-button">
-                                            <button>Commander</button>
+                                            <button onClick={openUberEats}>Commander</button>
                                         </div>
                                     </li>
                                 </ul>
@@ -77,19 +81,19 @@ function Footer() {
                                 </li>
 
                                 <li>
-                                    <a href="#Mentions">Mentions Légales</a>
+                                    <a href="/mentions-legales">Mentions Légales</a>
                                 </li>
                                 <li>
-                                    <a href="#Concept">Concept</a>
+                                    <a href="/#concept">Concept</a>
                                 </li>
                                 <li>
-                                    <a href="#Menu">Menu</a>
+                                    <a href="/#menu">Menu</a>
                                 </li>
                                 <li>
-                                    <a href="#Restaurant">Restaurant</a>
+                                    <a href="/#restaurant">Restaurant</a>
                                 </li>
                                 <li>
-                                    <a href="#contact">Contact</a>
+                                    <a href="/#contact">Contact</a>
                                 </li>
                                 <li className="footer--subtitle">
                                     Les Pasta Lovers, les vrais !

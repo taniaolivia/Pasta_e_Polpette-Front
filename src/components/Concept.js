@@ -17,7 +17,7 @@ function Concept() {
   },[]);
 
   return (
-    <div className="concept">
+    <div className="concept" id="concept">
         {concept && (<img src={concept.image} alt="" className="concept--image" draggable={false}/>)}
 
         {concept && (<div className="concept--text">

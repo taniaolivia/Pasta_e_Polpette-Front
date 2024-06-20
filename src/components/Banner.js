@@ -1,4 +1,29 @@
+import React, { useState, useEffect } from 'react';
+import { getContactSectionData } from '../services/Contact';
+import { getBannerSectionData } from '../services/Banner';
+
 function Banner() {
+    const openUberEats= () => {
+        window.open("https://www.ubereats.com/fr/store/pasta-e-polpette/q7J4GZ6zSkabzhJc0CMoFQ", "_blank");
+    }
+
+    const [contact, setContact] = useState(null);
+    const [banner, setBanner] = useState(null);
+
+    useEffect(()=>{
+        const fetchData = async () =>{
+            const data = await getContactSectionData();
+            const dataBanner = await getBannerSectionData();
+
+            if(data && dataBanner){
+                setContact(data.contact[0])
+                setBanner(dataBanner)
+            }
+        };
+
+        fetchData();
+    },[]);
+
     return (
         <div className="banner">
              <div className="image-container1">
@@ -21,19 +46,29 @@ function Banner() {
                     </div>
                 </div>
 
-                <p>Ceci est un exemple de texte qui sera affiché à côté de l'image.</p>
+                <p>""</p>
 
                 <div className="desktop">
                     <div className="button-group">
-                        <button className="btn discover-btn">Découvrir</button>
+                        <button className="btn discover-btn" onClick={openUberEats}>Découvrir</button>
                         
-                        <button className="btn icon-btn">
-                            <img src="../images/instgram.png" alt="Instagram" className="icon" draggable={false}/>
-                        </button>
+                        {contact && (
+                            <a href={contact.instagram} target='_blank' rel="noreferrer">
+                                <button className="btn icon-btn">
+                                    <img src="../images/instgram.png" alt="Instagram" className="icon" draggable={false}/>
+                                </button>
+                            </a>
+                        )}
 
-                        <button className="btn icon-btn">
-                            <img src="../images/tiktok.png" alt="TikTok" className="icon" draggable={false}/>
-                        </button>
+                        {contact && (
+                            contact.tiktok && (
+                                <a href={contact.tiktok} target='_blank' rel="noreferrer">
+                                    <button className="btn icon-btn">
+                                        <img src="../images/tiktok.png" alt="TikTok" className="icon" draggable={false}/>
+                                    </button>
+                                </a>
+                            )
+                        )}
                     </div>
                 </div>
 
@@ -52,7 +87,7 @@ function Banner() {
             <div className="mobile">
                 <div className="image-container">
                     <div className="button-group">
-                        <button className="btn discover-btn">Découvrir</button>
+                        <button className="btn discover-btn" onClick={openUberEats}>Découvrir</button>
                         
                         <div className="btn-mob">
                             <button className="btn icon-btn">

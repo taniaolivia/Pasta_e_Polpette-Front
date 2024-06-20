@@ -17,7 +17,7 @@ function Menu() {
   },[]);
 
   return (
-    <div className="menu">
+    <div className="menu" id="menu">
         <img src="../images/avocat.png" alt="" className="menu--avocado" draggable={false}/>
         
        {menu && (
