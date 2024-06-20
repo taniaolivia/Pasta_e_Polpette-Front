@@ -1,0 +1,41 @@
+.menuCarousel {
+    position: relative;
+
+    .openMenu-container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+
+        .openMenu {
+            background-color: #BD0411;
+            color: white;
+            border: 1px solid #BD0411;
+            font-family: "Rum Raisin";
+            border-radius: 30px;
+            font-size: 2em;
+            width: 100%;
+            max-width: 300px;
+            padding: 0.1em 2em;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #8b030c;
+                border: 1px solid #8b030c
+            }
+
+            @media screen and (max-width: 799px) {
+                font-size: clamp(20px, 4vw, 30px);
+            }
+        
+        }
+    }
+   
+    .carousel--image img{
+        width: 100%;
+
+        @media screen and (max-width: 799px) {
+            width: 120%;
+        }
+    }
+}

@@ -1,0 +1,44 @@
+.menu {
+    font-family: "Montserrat";
+    position: relative;
+
+    &--text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 4em 2em 6em 2em;
+    }
+    
+    .red {
+        color: #ED1F24;
+    }
+
+    &--description {
+        color: #191919;
+        width: 75%;
+        text-align: justify;
+    }
+
+    &--title {
+        font-family: "Rum Raisin";
+    }
+
+    &--meatball {
+        position: absolute;
+        bottom: 1em;
+        right: 0;
+        width: 100%;
+        max-width: 100px;
+        height: auto;
+    }
+
+    &--avocado {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        max-width: 200px;
+        height: auto;
+        left: -2em;
+    }
+}

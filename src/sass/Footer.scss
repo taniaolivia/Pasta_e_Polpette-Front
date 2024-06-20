@@ -1,0 +1,247 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 10px 20px;
+  background-color: #fff;
+  font-family: "Rum Raisin";
+  overflow: hidden;
+
+  .fl{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    font-family: "Montserrat";
+
+    p {
+      margin: 0;
+
+      @media screen and (max-width: 799px) {
+        margin: 1em auto;
+      }
+    }
+  }
+
+  &--title {
+    color: #ED1F24;
+    font-size: 1.5em;
+    margin-bottom: 0.2em;
+
+    @media screen and (max-width: 799px) {
+      font-size: clamp(30px, 4vw, 2.5em) !important;
+    }
+  }
+
+  &--subtitle {
+    text-align: left;
+    font-size: 0.9em;
+
+    @media screen and (max-width: 799px) {
+      font-size: clamp(15px, 4vw, 1em) !important;
+    }
+  }
+
+  &--icon {
+    margin: 1em 1.5em 1em 0;
+    cursor: pointer;
+    z-index: 1;
+    position: relative;
+  }
+
+  .fl1{
+      display: flex;
+      flex-direction: row;
+      align-items: self-end;
+      justify-content: center;
+  }
+
+  .container {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+  }
+
+  .row {
+      display:flex;
+      padding: 5px;
+      flex-direction: row;
+  }
+
+  .row1 {
+      display:flex;
+      padding: 5px;
+      flex-direction: row;
+      align-items: flex-end;
+
+      @media screen and (max-width: 799px) {
+        align-items: center;
+      }
+  }
+
+  .apple {
+      width: 100%;
+      max-width: 100px;
+      height: auto;
+      position: absolute;
+      top: -1em;
+      left: 0;
+  }
+
+  .footerImage {
+      width: 100%;
+      max-width: 180px;
+      height: auto;
+      position: absolute;
+      top: -1em;
+      right: 0; 
+  }
+
+  .footerImage-mobile {
+    width: 100%;
+    max-width: 180px;
+    height: auto;
+    position: absolute;
+    bottom: 0;
+    right: 0; 
+}
+
+  .button-group {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .btn {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 10px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: background-color 0.3s ease;
+  
+    &.discover-btn {
+      background-color: #fff;
+      color: #ED1F24;
+      font-family: 'Rhum Raisin', sans-serif;
+      font-size: 16px;
+    }
+  
+    &.icon-btn {
+      background-color: #fff;
+      color: #ED1F24;
+      width: 40px;
+      height: 40px;
+      padding: 0;
+  
+      .icon {
+        width: 15px;
+        height: 15px;
+      }
+    }
+  
+    &:hover {
+      background-color: #b51619;
+    }
+  }
+
+  .navigation {
+    flex-grow: 1;
+    text-align: center;
+
+    ul {
+      list-style: none;
+      margin: 15px;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      color: #191919;
+      align-items: center;
+      gap: 3em;
+      font-family: "Rum Raisin";
+
+
+      li {
+        a {
+          text-decoration: none;
+          color: #ED1F24;
+          font-weight: bold;
+          transition: color 0.3s;
+          font-size: 0.95em;
+
+          &:hover {
+            color: #6d0f10;
+          }
+        }
+      }
+    }
+  }
+
+  .order-button {
+    button {
+      background-color: #ED1F24;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      font-family: "Rum Raisin";
+      position: relative;
+      z-index: 1;
+
+      &:hover {
+        background-color: #cc0000;
+      }
+    }
+  }
+
+  .desktop {
+    display: block;
+  }
+
+  .mobile {
+    display: none;
+  }
+
+  .nomarginTop {
+    margin-top: 0;
+  }
+    
+  @media screen and (max-width: 799px) {
+    .desktop {
+        display: none;
+    }
+
+    .mobile {
+        display: block;
+    }
+
+    .navigation {
+        flex-grow: 1;
+        text-align: center;
+        margin-left: 0.85em;
+        position: relative;
+        z-index: 5;
+    
+        ul {
+          list-style: none;
+          margin: 15px 0 15px 0;
+          padding: 0;
+          display: flex;
+          justify-content: center;
+          color: #191919;
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 20px;
+
+          li {
+            font-size: clamp(20px, 4vw, 1.3em);
+          }
+        }
+      }
+  }
+}
