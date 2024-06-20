@@ -1,5 +1,6 @@
-import React,{useState, useEffect}  from 'react';
-import { getConceptSectionData } from '../services/Concept';
+import React, {useState, useEffect}  from 'react';
+import { useSelector } from 'react-redux';
+import { getConceptSectionData, updateConceptSectionData } from '../services/Concept';
 
 function Concept({dashboard}) {
   const [concept, setConcept] = useState(null);
@@ -8,6 +9,7 @@ function Concept({dashboard}) {
     title: "",
     description: ""
   })
+  const token = useSelector((state) => state.auth.token);
 
   useEffect(()=>{
     const fetchData = async () =>{
@@ -27,6 +29,32 @@ function Concept({dashboard}) {
 
   const openPopup = () => {
     setPopup(true);
+    setForm({
+      title: concept.title,
+      description: concept.description
+    })
+  }
+
+  const editData = async () => {
+    try {
+      await updateConceptSectionData(form, token);
+      const data = await getConceptSectionData();
+
+      setConcept(data.concept[0]);
+      setPopup(false);
+    } 
+    catch (error) {
+      console.error("Failed to update concept section data:", error);
+    }
+  }
+
+  const closePopup = () => {
+    if(popup === true) {
+      setPopup(false)
+    } 
+    else {
+      setPopup(true)
+    }
   }
 
   return (
@@ -66,12 +94,15 @@ function Concept({dashboard}) {
         </div>)}
 
         {dashboard && (
-          <img src="../images/edit.png" alt="Modifier" className='concept--edit' onClick={openPopup}/>
+          <img src="../images/edit.png" alt="Modifier" className='edit' onClick={openPopup}/>
         )}
 
         {dashboard && popup && (
-            <div className='popup'>
+            <div className='popup' onClick={closePopup}>
+
               <div className='popup--content'>
+                <img src="../images/close.png" alt="Fermer" onClick={closePopup} className='popup--close'/>
+
                 <h1 className='popup--title'>Concept</h1>
                 <div className='input'>
                   <label>Titre</label>
@@ -80,10 +111,10 @@ function Concept({dashboard}) {
 
                 <div className='input'>
                   <label>Description</label>
-                  <input type="text" name="description" value={form.description} onChange={handleChange}></input>
+                  <textarea type="text" name="description" value={form.description} onChange={handleChange} className='textarea'></textarea>
                 </div>
 
-                <button className='popup--btn'>Valider</button>
+                <button className='popup--btn' onClick={editData}>Valider</button>
               </div>
             </div>
         )}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { getContactSectionData, sendEmail } from '../services/Contact';
+import { getContactSectionData, sendEmail, updateContactSectionData } from '../services/Contact';
+import { useSelector } from 'react-redux';
 
 function Contact({dashboard}) {
   const [form, setForm] = useState({
@@ -10,7 +11,18 @@ function Contact({dashboard}) {
     subject: "",
     message: ""
   })
-  
+  const [popup, setPopup] = useState(false);
+  const [formEdit, setFormEdit] = useState({
+    title: "",
+    description: "",
+    telephone: "",
+    email: "",
+    address: "",
+    instagram: "",
+    tiktok: "",
+  })
+  const token = useSelector((state) => state.auth.token);
+
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
@@ -26,8 +38,6 @@ function Contact({dashboard}) {
     if (!form.subject) newErrors.subject = 'Objet est requis';
     if (!form.message) newErrors.message = 'Message est requis';
     setErrors(newErrors);
-
-    console.log(errors)
 
     return Object.keys(newErrors).length === 0;
   };
@@ -63,7 +73,46 @@ function Contact({dashboard}) {
     fetchData();
   },[]);
 
-  
+  const handleChangeEdit = (e) => {
+    setFormEdit({ ...formEdit, [e.target.name]: e.target.value });
+  };
+
+  const openPopup = () => {
+    setPopup(true);
+    setFormEdit({
+      title: contact.title,
+      description: contact.description,
+      telephone: contact.telephone,
+      email: contact.email,
+      address: contact.address,
+      instagram: contact.instagram,
+      tiktok: contact.tiktok
+    })
+  }
+
+  const editData = async () => {
+    try {
+      await updateContactSectionData(formEdit, token);
+      const data = await getContactSectionData();
+
+      setContact(data.contact[0]);
+      setPopup(false);
+    } 
+    catch (error) {
+      console.error("Failed to update contact section data:", error);
+    }
+  }
+
+  const closePopup = () => {
+    if(popup === true) {
+      setPopup(false)
+    } 
+    else {
+      setPopup(true)
+    }
+  }
+
+
   return (
     <div className="contact" id="contact">
 
@@ -104,6 +153,57 @@ function Contact({dashboard}) {
                   </a>
                 )}
               </div>
+
+              {dashboard && (
+                  <img src="../images/edit.png" alt="Modifier" className='edit' onClick={openPopup}/>
+              )}
+
+              {dashboard && popup && (
+                  <div className='popup'>
+
+                    <div className='popup--content'>
+                      <img src="../images/close.png" alt="Fermer" onClick={closePopup} className='popup--close'/>
+
+                      <h1 className='popup--title'>Contact</h1>
+                      <div className='input'>
+                        <label>Titre</label>
+                        <input type="text" name="title" value={formEdit.title} onChange={handleChangeEdit}></input>
+                      </div>
+
+                      <div className='input'>
+                        <label>Description</label>
+                        <textarea type="text" name="description" value={formEdit.description} onChange={handleChangeEdit} className='textarea'></textarea>
+                      </div>
+
+                      <div className='input'>
+                        <label>Téléphone</label>
+                        <input type="tel" name="telephone" value={formEdit.telephone} onChange={handleChangeEdit}></input>
+                      </div>
+
+                      <div className='input'>
+                        <label>E-mail</label>
+                        <input type="email" name="email" value={formEdit.email} onChange={handleChangeEdit}></input>
+                      </div>
+
+                      <div className='input'>
+                        <label>Adresse</label>
+                        <input type="text" name="address" value={formEdit.address} onChange={handleChangeEdit}></input>
+                      </div>
+
+                      <div className='input'>
+                        <label>Lien d'Instagram</label>
+                        <input type="text" name="instagram" value={formEdit.instagram} onChange={handleChangeEdit}></input>
+                      </div>
+
+                      <div className='input'>
+                        <label>Lien de Tiktok</label>
+                        <input type="text" name="tiktok" value={formEdit.tiktok} onChange={handleChangeEdit}></input>
+                      </div>
+
+                      <button className='popup--btn' onClick={editData}>Valider</button>
+                    </div>
+                  </div>
+              )}
             </div>
 
             <div className="contact--content right">
@@ -258,6 +358,57 @@ function Contact({dashboard}) {
                     </a>
                   )}
                 </div>
+
+                {dashboard && (
+                  <img src="../images/edit.png" alt="Modifier" className='edit edit--contact' onClick={openPopup}/>
+                )}
+
+                {dashboard && popup && (
+                    <div className='popup'>
+
+                      <div className='popup--content'>
+                        <img src="../images/close.png" alt="Fermer" onClick={closePopup} className='popup--close'/>
+
+                        <h1 className='popup--title'>Contact</h1>
+                        <div className='input'>
+                          <label>Titre</label>
+                          <input type="text" name="title" value={formEdit.title} onChange={handleChangeEdit}></input>
+                        </div>
+
+                        <div className='input'>
+                          <label>Description</label>
+                          <textarea type="text" name="description" value={formEdit.description} onChange={handleChangeEdit} className='textarea'></textarea>
+                        </div>
+
+                        <div className='input'>
+                          <label>Téléphone</label>
+                          <input type="tel" name="telephone" value={formEdit.telephone} onChange={handleChangeEdit}></input>
+                        </div>
+
+                        <div className='input'>
+                          <label>E-mail</label>
+                          <input type="email" name="email" value={formEdit.email} onChange={handleChangeEdit}></input>
+                        </div>
+
+                        <div className='input'>
+                          <label>Adresse</label>
+                          <input type="text" name="address" value={formEdit.address} onChange={handleChangeEdit}></input>
+                        </div>
+
+                        <div className='input'>
+                          <label>Lien d'Instagram</label>
+                          <input type="text" name="instagram" value={formEdit.instagram} onChange={handleChangeEdit}></input>
+                        </div>
+
+                        <div className='input'>
+                          <label>Lien de Tiktok</label>
+                          <input type="text" name="tiktok" value={formEdit.tiktok} onChange={handleChangeEdit}></input>
+                        </div>
+
+                        <button className='popup--btn' onClick={editData}>Valider</button>
+                      </div>
+                    </div>
+                )}
               </div>
           </div>
         </div>

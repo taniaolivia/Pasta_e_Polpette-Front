@@ -30,7 +30,7 @@ body {
 
 .popup {
     position: fixed;
-    z-index: 5;
+    z-index: 1000;
     top: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.4);
@@ -40,20 +40,53 @@ body {
     align-items: center;
     justify-content: center;
 
+    &--close {
+        position: absolute;
+        top: 1em;
+        right: 1em;
+        width: 100%;
+        max-width: 40px;
+        height: auto;
+        cursor: pointer;
+    }
+    
+    &--title {
+        text-align: center;
+        margin-bottom: 1em;
+        font-family: "Rum Raisin";
+
+        @media screen and (max-width: 799px) {
+            font-size: clamp(28px, 3vw, 2em);
+        }
+    }
+
     &--content {
         background-color: white;
-        padding: 20px;
+        padding: 1em 1em 2em 1em;
         border-radius: 10px;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         width: 90%;
         max-width: 500px;
+        height: 100%;
+        max-height: 500px;
         color: black;
+        position: relative;
+        overflow-y: scroll;
+
+        @media screen and (max-width: 799px) {
+            max-width: 400px;
+        }
+
+        @media screen and (max-width: 450px) {
+            max-width: 280px;
+        }
 
         input {
             font-family: "Montserrat";
             border: none;
             border-bottom: 1px solid #8D8D8D;
-    
+            font-size: clamp(12px, 3vw, 15px);
+
             &:focus {
                 outline: none;
                 border-bottom: 1px solid #000000;
@@ -63,16 +96,90 @@ body {
         .input {
             display: flex;
             flex-direction: column;
-            margin-right: 3em;
-            margin-bottom: 3em;
-            width: 100%;
+            width: 85%;
+            margin: 0 auto 3em auto;
     
             @media screen and (max-width: 799px) {
                 margin-right: 2em;
                 margin-bottom: 2em;
             }
         }
-    
+
+        label {
+            color: #8D8D8D;
+            font-size: 0.8em;
+            margin-bottom: 1em;
+            
+            @media screen and (max-width: 799px) {
+                font-size: clamp(12px, 3vw, 15px);
+                text-align: left;
+            }
+        }
+    }
+
+
+    &--btn {
+        background-color: #ED1F24;
+        color: white;
+        width: 100%;
+        max-width: 250px;
+        height: auto;
+        padding: 0.7em 1em;
+        border: none;
+        border-radius: 30px;
+        font-weight: bold;
+        font-family: "Rum Raisin";
+        font-size: 1.3em;
+        cursor: pointer;
+        margin-bottom: 1em;
+
+        @media screen and (max-width: 799px) {
+           font-size: clamp(17px, 4vw, 20px);
+           max-width: 200px;
+           margin-bottom: 2em;
+           position: relative;
+           left: 50%;
+           transform: translateX(-50%);
+        }
+
+        @media screen and (min-width: 800px) {
+           position: relative;
+           left: 50%;
+           transform: translateX(-50%);
+        }
+
+        &:hover {
+            background-color: #b8181b;
+        }
     }
       
+}
+
+.textarea {
+    height: 200px;
+    font-family: "Montserrat";
+    text-align: justify;
+    padding: 1em 1em;
+
+    @media screen and (max-width: 799px) {
+        font-size: clamp(12px, 3vw, 15px);
+    }
+
+}
+
+.edit {
+    position: absolute;
+    bottom: 1em;
+    right: 2em;
+    cursor: pointer;
+    width: 100%;
+    max-width: 45px;
+    height: auto;
+
+    &--contact{
+        @media screen and (max-width: 799px) {
+            bottom: 0;
+            right: 0;
+        }
+    }
 }

@@ -12,10 +12,18 @@
         justify-content: center;
         margin: 3em auto 4em auto;
 
+        @media screen and (max-width: 450px) {
+            max-width: 200px;
+        }
+
         &--title {
             font-family: "Rum Raisin";
             text-align: center;
             margin-bottom: 1em;
+
+            @media screen and (max-width: 799px) {
+                font-size: clamp(28px, 3vw, 1.8em);
+            }
         }
 
         input {
@@ -50,6 +58,7 @@
             color: #8D8D8D;
             font-size: 0.8em;
             margin-bottom: 1em;
+            font-family: "Montserrat";
             
             @media screen and (max-width: 799px) {
                 font-size: clamp(10px, 3vw, 15px);

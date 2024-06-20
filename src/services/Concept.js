@@ -7,7 +7,12 @@ export const getConceptSectionData = async () => {
     return res.data;
 }
 
-export const  updateConceptSectionData = async(concept) => {
-    const res = await axios.patch(`${apiUrl}/concept`, concept, {new: true});
+export const  updateConceptSectionData = async(concept, token) => {
+    const res = await axios.patch(`${apiUrl}/concept`, concept, {
+        new: true,
+        headers: {
+            'Authorization': token
+        }
+    });
     return res.data;
 }
