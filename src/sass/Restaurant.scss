@@ -18,7 +18,7 @@
 
     
 
-    .editContact  {
+    .editContactDS  {
         position: absolute;
         bottom: 1em;
         right: 2em;
@@ -310,6 +310,8 @@
     .mobile {
         display: none;
 
+        
+
         @media screen and (max-width: 799px) {
             display: block;
             text-align: center;
@@ -319,8 +321,8 @@
         .editContact {
             position: absolute;
             bottom: 1em;
-            right: 3em;
-            top: 56em;
+            right: 4em;
+            top: 60em;
             cursor: pointer;
             width: 100%;
             max-width: 45px;

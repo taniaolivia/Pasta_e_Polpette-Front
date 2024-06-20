@@ -267,8 +267,9 @@ function Restaurant({ dashboard }) {
             </div>
 
             {dashboard && (
+                <div className='desktop'>                <img src="../images/edit.png" alt="Modifier" className='editContactDS ' onClick={openPopup} />
+                </div>
 
-                <img src="../images/edit.png" alt="Modifier" className='editContact ' onClick={openPopup} />
             )}
 
 
