@@ -1,16 +1,13 @@
-
-body {
-    font-family: 'Rhum Raisin', sans-serif;
-    color: #191919;
-  }
 .header {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
     background-color: #fff;
-    border-bottom: 1px solid #eaeaea;
-  
+    color: #191919;
+    font-family: "Rum Raisin";
+
     .logo img {
       height: 50px;
     }
@@ -24,7 +21,7 @@ body {
         width: 25px;
         height: 3px;
         margin: 5px auto;
-        background-color: #ff0000;
+        background-color: #ED1F24;
         transition: all 0.3s;
       }
     }
@@ -39,23 +36,22 @@ body {
         padding: 0;
         display: flex;
         justify-content: flex-end;
-        font-family: 'Rhum Raisin', sans-serif;
-  color: #191919;
-  align-items: center;
-
-        gap: 20px;
+        color: #191919;
+        align-items: center;
+        gap: 4em;
   
         li {
-            
+          cursor: pointer;
+
           a {
             text-decoration: none;
             color: #000;
             font-weight: bold;
             transition: color 0.3s;
-            font-family: 'Rhum Raisin', sans-serif;
+            font-family: "Rum Raisin";
   
             &:hover {
-              color: #ff0000;
+              color: #ED1F24;
             }
           }
         }
@@ -64,7 +60,7 @@ body {
   
     .order-button {
       button {
-        background-color: #ff0000;
+        background-color: #ED1F24;
         color: #fff;
         border: none;
         padding: 10px 20px;
@@ -73,14 +69,15 @@ body {
         font-weight: bold;
         cursor: pointer;
         transition: background-color 0.3s;
-  
+        font-family: "Rum Raisin";
+
         &:hover {
           background-color: #cc0000;
         }
       }
     }
   
-    @media (max-width: 600px) {
+    @media (max-width: 799px) {
       .menu-icon {
         display: block;
       }
@@ -89,21 +86,38 @@ body {
         display: none;
         flex-direction: column;
         align-items: flex-start;
+        position: absolute;
+        top: 4em;
+        right: 1.2em;
         width: 100%;
+        max-width: 200px;
+        background-color: white;
+        z-index: 1;
+        border: 1px solid #ED1F24;
+        border-radius: 10px;
   
         ul {
           flex-direction: column;
           align-items: flex-start;
           gap: 10px;
-  
+          width: 100%;
+          max-width: 200px;
+          
           li {
             width: 100%;
+            max-width: 170px;
             padding: 10px 0;
-  
+            border-bottom: 1px solid #191919;
+            cursor: pointer;
+
             a {
               display: block;
               width: 100%;
             }
+          }
+
+          .command {
+            border: none;
           }
         }
       }
@@ -122,7 +136,6 @@ body {
       .navigation.active,
       .order-button.active {
         display: flex;
-
       }
     }
   }

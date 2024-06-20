@@ -10,7 +10,7 @@ function Header() {
   return (
     <div className="header">
       <div className="logo">
-        <img src="../images/logo.svg" alt="Site Logo" />
+        <img src="../images/logo.svg" alt="Site Logo" draggable={false}/>
       </div>
       <div className="menu-icon" onClick={toggleMenu}>
         <div className="bar"></div>
@@ -23,7 +23,7 @@ function Header() {
           <li><a href="#menu">Menu</a></li>
           <li><a href="#restaurant">Restaurant</a></li>
           <li><a href="#contact">Contact</a></li>
-          <li><div className={`order-button ${menuOpen ? 'active' : ''}`}>
+          <li className='command'><div className={`order-button ${menuOpen ? 'active' : ''}`}>
         <button>Commander</button>
       </div></li>
         </ul>
