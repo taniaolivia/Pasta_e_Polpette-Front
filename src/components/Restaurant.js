@@ -27,14 +27,21 @@ function Restaurant({ dashboard }) {
 
     const [form, setForm] = useState({
 
-        description: ""
+        name: '',
+        address: '',
+        telephone: '',
+        email: '',
+        access: '',
+        schedule: '',
+        latitude: 0.0,
+        longitude: 0.0
     })
     const openUberEats = () => {
         window.open("https://www.ubereats.com/fr/store/pasta-e-polpette/q7J4GZ6zSkabzhJc0CMoFQ", "_blank");
     }
 
     const openAvis = () => {
-        window.open("https://www.google.com/maps/place/Pasta%26polpette/@48.8626742,2.3705276,17z/data=!4m17!1m8!3m7!1s0x47e66d0038b1bb4d:0x179d645f9e3fa9f9!2sPasta%26polpette!8m2!3d48.8626742!4d2.3727163!10e4!16s%2Fg%2F11vzcmhtmc!3m7!1s0x47e66d0038b1bb4d:0x179d645f9e3fa9f9!8m2!3d48.8626742!4d2.3727163!9m1!1b1!16s%2Fg%2F11vzcmhtmc?entry=ttu");
+        window.open("https://g.page/r/CfmpP55fZJ0XEBE/review", "_blank");
     }
 
     useEffect(() => {
@@ -46,6 +53,8 @@ function Restaurant({ dashboard }) {
                 setForm({
                     name: data.restaurant[0].name || '',
                     address: data.restaurant[0].address || '',
+                    telephone: data.restaurant[0].telephone || '',
+                    email: data.restaurant[0].email || '',
                     access: data.restaurant[0].access || '',
                     schedule: data.restaurant[0].schedule || '',
                     latitude: parseFloat(data.restaurant[0].latitude) || 0.0,
@@ -61,7 +70,7 @@ function Restaurant({ dashboard }) {
     if (!restaurant) {
         return <div>Loading...</div>
     }
-    const { name, title, address, access, schedule, latitude, langitude } = restaurant;
+    const { name, title, address, access, schedule, latitude, langitude, telephone, email } = restaurant;
     const position = [latitude, langitude];
 
 
@@ -74,6 +83,8 @@ function Restaurant({ dashboard }) {
         setForm({
             name: restaurant.name,
             address: restaurant.address,
+            telephone: restaurant.telephone,
+            email: restaurant.email,
             access: restaurant.access,
             schedule: restaurant.schedule,
             latitude: restaurant.latitude,
@@ -110,7 +121,7 @@ function Restaurant({ dashboard }) {
 
 
     return (
-        <div className="restaurant">
+        <div className="restaurant" id="restaurant">
             <img src="../images/rest.png" alt="" className="restaurant--rest" />
 
             <div className="restaurant--text">
@@ -120,14 +131,14 @@ function Restaurant({ dashboard }) {
                 <img src="../images/fleur.png" alt="" className="restaurant--fleur" />
             </div>
             <div>
-                <img src="../images/boulle.png" alt="" className="restaurant--boulle" />
+                <img src="../images/boulle.png" alt="" className="restaurant--boulle desktop" />
             </div>
 
             <div className='desktop'>
-                <div className="contact--contents">
-                    <div className="contact--content left">
+                <div className="restaurant--contents">
+                    <div className="restaurant--content left">
                         <div className="map-container">
-                            <MapContainer center={position} zoom={10} style={{ height: "300px", width: "100%" }}>
+                            <MapContainer center={position} zoom={10} style={{ height: "500px", width: "500px" }}>
                                 <TileLayer
                                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -141,26 +152,40 @@ function Restaurant({ dashboard }) {
                         </div>
                     </div>
 
-                    <div className="contact--content right">
+                    <div className="restaurant--content right">
                         <p className="restaurant--title">{name}</p>
 
-                        <div className="contact--content--info">
+                        <div className="restaurant--content--info">
                             <div className="tel contact--icon--text">
                                 <p>{address}</p>
                             </div>
                         </div>
 
-                        <div className="contact--content--info">
+                        <div className="restaurant--content--info">
                             <div className="email contact--icon--text">{access}</div>
                         </div>
 
-                        <div className="contact--content--info">
+                        <div className="restaurant--content--info">
                             <div className="tel contact--icon--text">
                                 <p>{schedule}</p>
                             </div>
                         </div>
 
-                        <div className="contact--content--info socialMedia">
+                        {telephone && (
+                            <div className="restaurant--content--info">
+                                <div className="tel contact--icon--text">
+                                    {telephone}
+                                </div>
+                            </div>
+                        )}
+
+                        <div className="restaurant--content--info">
+                            <div className="email contact--icon--text">
+                                {email}
+                            </div>
+                        </div>
+
+                        <div className="restaurant--content--info socialMedia">
                             <div className="order-button">
                                 <button onClick={openUberEats}>Commander</button>
                             </div>
@@ -170,11 +195,10 @@ function Restaurant({ dashboard }) {
                             </div>
                         </div>
                     </div>
-
-                    <div>
-                        <img src="../images/rosemary.png" alt="" className="restaurant--rosemary" />
-                    </div>
                 </div>
+
+                <img src="../images/rosemary.png" alt="" className="restaurant--rosemary" />
+
             </div>
 
             <div className='mobile'>
@@ -192,22 +216,35 @@ function Restaurant({ dashboard }) {
                     </MapContainer>
                 </div>
 
-                <div className="contact--content right">
+                <div className="restaurant--content right">
                     <p className="restaurant--title">{name}</p>
 
-                    <div className="contact--content--info">
+                    <div className="restaurant--content--info">
                         <div >
                             <p>{address}</p>
                         </div>
                     </div>
 
                     <div >
-                        <div className="email contact--icon--text">{access}</div>
+                        <div className="email restaurant--icon--text">{access}</div>
                     </div>
 
-                    <div className="contact--content--info">
+                    <div className="restaurant--content--info">
                         <div >
                             <p>{schedule}</p>
+                        </div>
+                    </div>
+                    {telephone && (
+                        <div className="restaurant--content--info">
+                            <div className="tel contact--icon--text">
+                                {telephone}
+                            </div>
+                        </div>
+                    )}
+
+                    <div className="restaurant--content--info">
+                        <div className="email contact--icon--text">
+                            {email}
                         </div>
                     </div>
 
@@ -225,12 +262,12 @@ function Restaurant({ dashboard }) {
                     </div>
                 </div>
                 {dashboard && (
-                <img src="../images/edit.png" alt="Modifier" className='editContact ' onClick={openPopup} />
-            )}
+                    <img src="../images/edit.png" alt="Modifier" className='editContact ' onClick={openPopup} />
+                )}
             </div>
 
             {dashboard && (
-                
+
                 <img src="../images/edit.png" alt="Modifier" className='editContact ' onClick={openPopup} />
             )}
 
@@ -256,6 +293,14 @@ function Restaurant({ dashboard }) {
                         <div className='input'>
                             <label>Horaire</label>
                             <input type="text" name="schedule" value={form.schedule} onChange={handleChange}></input>
+                        </div>
+                        <div className='input'>
+                            <label>Telephone</label>
+                            <input type="text" name="telephone" value={form.telephone} onChange={handleChange}></input>
+                        </div>
+                        <div className='input'>
+                            <label>Email</label>
+                            <input type="text" name="email" value={form.email} onChange={handleChange}></input>
                         </div>
                         <div className='input'>
                             <label>Latitude</label>

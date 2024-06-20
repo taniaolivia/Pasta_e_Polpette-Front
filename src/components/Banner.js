@@ -201,6 +201,23 @@ function Banner({ dashboard }) {
                             <button className="btn icon-btn">
                                 <img src="../images/tiktok.png" alt="TikTok" className="icon" draggable={false} />
                             </button>
+                            {contact && (
+                                <a href={contact.instagram} target='_blank' rel="noreferrer">
+                                    <button className="btn icon-btn">
+                                        <img src="../images/instgram.png" alt="Instagram" className="icon" draggable={false}/>
+                                    </button>
+                                </a>
+                            )}
+
+                            {contact && (
+                                contact.tiktok && (
+                                    <a href={contact.tiktok} target='_blank' rel="noreferrer">
+                                        <button className="btn icon-btn">
+                                            <img src="../images/tiktok.png" alt="TikTok" className="icon" draggable={false}/>
+                                        </button>
+                                    </a>
+                                )
+                            )}
                         </div>
                     </div>
 
