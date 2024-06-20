@@ -47,7 +47,7 @@ function Restaurant({dashboard}) {
     const position = [latitude, langitude];
 
     return (
-        <div className="restaurant">
+        <div className="restaurant" id="restaurant">
             <img src="../images/rest.png" alt="" className="restaurant--rest" />
 
             <div className="restaurant--text">
