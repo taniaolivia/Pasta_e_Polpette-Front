@@ -26,7 +26,7 @@ function Concept({dashboard}) {
   };
 
   const openPopup = () => {
-    
+    setPopup(true);
   }
 
   return (
@@ -65,11 +65,11 @@ function Concept({dashboard}) {
           </div>
         </div>)}
 
-        {dashboard === true && (
-          <img src="../images/edit.png" alt="Modifier" className='concept--edit' onClick={openPopup()}/>
+        {dashboard && (
+          <img src="../images/edit.png" alt="Modifier" className='concept--edit' onClick={openPopup}/>
         )}
 
-        {dashboard === true && popup === true (
+        {dashboard && popup && (
             <div className='popup'>
               <h1>Concept</h1>
               <div className='input'>
@@ -81,6 +81,8 @@ function Concept({dashboard}) {
                 <label>Description</label>
                 <input type="text" name="description" value={form.description} onChange={handleChange}></input>
               </div>
+
+              <button className='popup--btn'></button>
             </div>
         )}
     </div>
