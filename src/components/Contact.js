@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { getContactSectionData, sendEmail } from '../services/Contact';
 
-function Contact() {
+function Contact({dashboard}) {
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -150,7 +150,7 @@ function Contact() {
                       <span className='error-message'>{errors.subject}</span>
                     )}
                 </div>
-                
+
                 <div className="input">
                   <label>Message*</label>
                   <input type="text" name="message" value={form.message} onChange={handleChange} required></input>

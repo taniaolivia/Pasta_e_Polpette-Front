@@ -7,10 +7,17 @@
     padding: 1em 2em 1em 2em;
     color: white;
     font-family: 'Montserrat';
+    position: relative;
 
     @media screen and (max-width: 799px) {
         flex-direction: column;
         text-align: center;
+    }
+
+    &--edit {
+        position: absolute;
+        top: 1em;
+        right: 2em;
     }
 
     &--image {

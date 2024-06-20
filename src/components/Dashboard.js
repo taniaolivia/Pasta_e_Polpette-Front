@@ -10,11 +10,11 @@ function Dashboard() {
   return (
     <div className="dashboard">
       <Header></Header>
-      <Banner></Banner>
-      <Concept></Concept>
-      <Menu></Menu>
-      <MenuCarousel></MenuCarousel>
-      <Contact></Contact>
+      <Banner dashboard={true}></Banner>
+      <Concept dashboard={true}></Concept>
+      <Menu dashboard={true}></Menu>
+      <MenuCarousel dashboard={true}></MenuCarousel>
+      <Contact dashboard={true}></Contact>
       <Footer></Footer>
     </div>
   );

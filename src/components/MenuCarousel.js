@@ -3,7 +3,7 @@ import 'react-multi-carousel/lib/styles.css';
 import React,{useState, useEffect}  from 'react';
 import { getMenuCarouselData, getMenuSectionData } from '../services/Menu';
 
-function MenuCarousel() {
+function MenuCarousel({dashboard}) {
     const [menu, setMenu] = useState(null);
     const [carousel, setCarousel] = useState([]);
 

@@ -19,11 +19,11 @@ function Home() {
   return (
     <div className="app">
       <Header></Header>
-      <Banner></Banner>
-      <Concept></Concept>
-      <Menu></Menu>
-      <MenuCarousel></MenuCarousel>
-      <Contact></Contact>
+      <Banner dashboard={false}></Banner>
+      <Concept dashboard={false}></Concept>
+      <Menu dashboard={false}></Menu>
+      <MenuCarousel dashboard={false}></MenuCarousel>
+      <Contact dashboard={false}></Contact>
       <Footer></Footer>
     </div>
   );

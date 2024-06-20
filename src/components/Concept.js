@@ -1,8 +1,13 @@
 import React,{useState, useEffect}  from 'react';
 import { getConceptSectionData } from '../services/Concept';
 
-function Concept() {
+function Concept({dashboard}) {
   const [concept, setConcept] = useState(null);
+  const [popup, setPopup] = useState(false);
+  const [form, setForm] = useState({
+    title: "",
+    description: ""
+  })
 
   useEffect(()=>{
     const fetchData = async () =>{
@@ -15,6 +20,14 @@ function Concept() {
 
     fetchData();
   },[]);
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const openPopup = () => {
+    
+  }
 
   return (
     <div className="concept" id="concept">
@@ -51,6 +64,25 @@ function Concept() {
               </div>
           </div>
         </div>)}
+
+        {dashboard === true && (
+          <img src="../images/edit.png" alt="Modifier" className='concept--edit' onClick={openPopup()}/>
+        )}
+
+        {dashboard === true && popup === true (
+            <div className='popup'>
+              <h1>Concept</h1>
+              <div className='input'>
+                <label>Titre</label>
+                <input type="text" name="title" value={form.title} onChange={handleChange}></input>
+              </div>
+
+              <div className='input'>
+                <label>Description</label>
+                <input type="text" name="description" value={form.description} onChange={handleChange}></input>
+              </div>
+            </div>
+        )}
     </div>
   );
 }

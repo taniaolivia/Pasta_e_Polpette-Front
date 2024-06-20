@@ -1,7 +1,7 @@
 import React,{useState, useEffect}  from 'react';
 import { getMenuSectionData } from '../services/Menu';
 
-function Menu() {
+function Menu({dashboard}) {
   const [menu, setMenu] = useState(null);
 
   useEffect(() => {

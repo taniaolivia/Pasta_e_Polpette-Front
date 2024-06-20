@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getContactSectionData } from '../services/Contact';
 import { getBannerSectionData } from '../services/Banner';
 
-function Banner() {
+function Banner({dashboard}) {
     const openUberEats= () => {
         window.open("https://www.ubereats.com/fr/store/pasta-e-polpette/q7J4GZ6zSkabzhJc0CMoFQ", "_blank");
     }
