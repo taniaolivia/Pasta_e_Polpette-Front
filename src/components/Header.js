@@ -1,6 +1,6 @@
 import  { useState } from 'react';
 
-function Header({ onScrollToConcept, onScrollToMenu, onScrollToContact }) {
+function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {

@@ -1,29 +1,54 @@
+import React, { useState, useEffect } from 'react';
+import { getContactSectionData } from '../services/Contact';
+
 function Footer() {
     const openUberEats= () => {
         window.open("https://www.ubereats.com/fr/store/pasta-e-polpette/q7J4GZ6zSkabzhJc0CMoFQ", "_blank");
     }
 
+    const [contact, setContact] = useState(null);
+
+    useEffect(()=>{
+        const fetchData = async () =>{
+            const data = await getContactSectionData();
+    
+            if(data){
+              setContact(data.contact[0])
+            }
+        };
+    
+        fetchData();
+      },[]);
+
     return (
         <div className="footer">
-            <div className="desktop">
+            {contact && (<div className="desktop">
                 <div className=" row">
                     <div className="container">
                         <div className="row">
                             <img src="../images/apple.png" alt="Apple" className="apple" draggable={false}/>
 
                             <div className="container">
-                                <h1 className="footer--title">Paste e Polpette</h1>
+                                <h1 className="footer--title">Pasta e Polpette</h1>
                                 
                                 <span className="footer--subtitle">Les Pasta Lovers, les vrais !</span>
                                 
                                 <div className="button-group">
-                                    <a href="https://www.instagram.com/pastaepolpette_fr/" target='_blank' rel="noreferrer">
-                                        <img src="../images/SocialInsta.png" alt="Instagram" className="footer--icon" draggable={false}/>
-                                    </a>
-
-                                    <a href="https://www.instagram.com/pastaepolpette_fr/" target='_blank' rel="noreferrer">
-                                        <img src="../images/tiktokFot.png" alt="TikTok" className="footer--icon" draggable={false}/>
-                                    </a>
+                                    {contact && (
+                                        contact.instagram && (
+                                            <a href={contact.instagram} target='_blank' rel="noreferrer">
+                                                <img src="../images/SocialInsta.png" alt="Instagram" className="footer--icon" draggable={false}/>
+                                            </a>
+                                        )
+                                    )}
+                                    
+                                    {contact && (
+                                        contact.tiktok && (
+                                            <a href={contact.tiktok} target='_blank' rel="noreferrer">
+                                                <img src="../images/tiktokFot.png" alt="TikTok" className="footer--icon" draggable={false}/>
+                                            </a>
+                                        )
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -67,7 +92,7 @@ function Footer() {
                         &copy; Pasta E Polpette 2024
                     </p>
                 </div>
-            </div>
+            </div>)}
 
             <div className="mobile">
                 <div className="container">
@@ -77,7 +102,7 @@ function Footer() {
                         <nav className="navigation">
                             <ul>
                                 <li className="footer--title"> 
-                                    Paste e Polpette
+                                    Pasta e Polpette
                                 </li>
 
                                 <li>
@@ -101,15 +126,21 @@ function Footer() {
                             </ul>
 
                             <div className="row1">
-                                <div className="button-group nomarginTop">
-                                    <a href="https://www.instagram.com/pastaepolpette_fr/" target='_blank' rel="noreferrer">
-                                        <img src="../images/SocialInsta.png" alt="Instagram" className="footer--icon" draggable={false}/>
-                                    </a>
+                                {contact && (
+                                    <div className="button-group nomarginTop">
+                                        {contact.instagram && (
+                                            <a href={contact.instagram} target='_blank' rel="noreferrer">
+                                                <img src="../images/SocialInsta.png" alt="Instagram" className="footer--icon" draggable={false}/>
+                                            </a>
+                                        )}
 
-                                    <a href="https://www.instagram.com/pastaepolpette_fr/" target='_blank' rel="noreferrer">
-                                        <img src="../images/tiktokFot.png" alt="TikTok" className="footer--icon" draggable={false}/>
-                                    </a>
-                                </div>
+                                        {contact.tiktok && (
+                                            <a href={contact.tiktok} target='_blank' rel="noreferrer">
+                                                <img src="../images/tiktokFot.png" alt="TikTok" className="footer--icon" draggable={false}/>
+                                            </a>
+                                        )}
+                                    </div>
+                                )}
                                 <div className="order-button">
                                     <button>Commander</button>
                                 </div>

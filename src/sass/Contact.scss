@@ -12,6 +12,7 @@
         margin-left: 1.5em;
 
         @media screen and (max-width: 799px) {
+            margin-left: 0.85em;
         }
     }
 
@@ -21,9 +22,11 @@
     }
 
     &--content {
+        
         @media screen and (max-width: 799px) {
             width: 87%;
             margin: auto;
+            position: relative;
         }
 
         &--title {
@@ -140,6 +143,7 @@
         border-bottom-right-radius: 20px;
         padding: 1em 3em;
         width: 35%;
+        position: relative;
     }
 
     .right {

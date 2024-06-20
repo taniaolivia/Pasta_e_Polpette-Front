@@ -1,12 +1,51 @@
 .banner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 20px 0 20px;
-    flex-wrap: wrap; 
-    position: relative;
-    font-family: 'Montserrat';
-} 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px 0 20px;
+  flex-wrap: wrap;
+  position: relative;
+  font-family: 'Montserrat';
+
+  @media screen and (max-width: 799px) {
+    padding: 0;
+  }
+
+}
+
+.editB {
+  position: absolute;
+  bottom: 11.2em;
+  left: 0.5em;
+  cursor: pointer;
+  width: 100%;
+  max-width: 35px;
+  height: auto;
+
+  &--contact{
+      @media screen and (max-width: 799px) {
+          bottom: 0;
+          right: 0;
+      }
+  }
+  
+}
+
+.editDes {
+  position: absolute;
+  top: 17.5em;
+  left: 0.5em;
+  width: 100%;
+  max-width: 35px;
+  height: auto;
+  cursor: pointer;
+}
+
+.editContact {
+  position: absolute;
+  top: 21em;
+  right: 109em;
+}
 
 .text-container {
   flex: 1;
@@ -36,7 +75,7 @@
   flex-direction: row;
   align-items: center;
 }
-  
+
 .image-wrapper {
   text-align: center;
 }
@@ -166,11 +205,21 @@
 /* Media Queries for Responsiveness */
 @media screen and (max-width: 799px) {
   .desktop {
-      display: none;
+    display: none;
   }
 
   .mobile {
-      display: block;
+    display: block;
+  }
+
+  .editB {
+    position: absolute;
+    bottom: 10em;
+    left: 3em;
+    cursor: pointer;
+    width: 100%;
+    max-width: 45px;
+    height: auto;
   }
 
   .banner {
@@ -214,7 +263,7 @@
   .image-container2 {
     flex-direction: column;
     align-items: center;
-    margin-bottom: 20px;  
+    margin-bottom: 20px;
   }
 
   .second-image {
@@ -233,10 +282,31 @@
     margin-bottom: 42px;
   }
 
-  .btn-mob{
+  .btn-mob {
     display: flex;
     flex-direction: row;
     margin-top: 22px;
     justify-content: space-around;
+  }
+
+  .editDes {
+    position: absolute;
+    top: 18em;
+    left: 2em;
+    cursor: pointer;
+    width: 100%;
+    max-width: 45px;
+    height: auto;
+  }
+
+  .editContact {
+    position: absolute;
+    top: 33em;
+    right: 19em;
+
+    cursor: pointer;
+    width: 100%;
+    max-width: 45px;
+    height: auto;
   }
 }

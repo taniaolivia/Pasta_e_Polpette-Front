@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { getContactSectionData, sendEmail } from '../services/Contact';
+import { getContactSectionData, sendEmail, updateContactSectionData } from '../services/Contact';
+import { useSelector } from 'react-redux';
 
-function Contact() {
+function Contact({dashboard}) {
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
@@ -10,12 +11,40 @@ function Contact() {
     subject: "",
     message: ""
   })
-  
+  const [popup, setPopup] = useState(false);
+  const [formEdit, setFormEdit] = useState({
+    title: "",
+    description: "",
+    telephone: "",
+    email: "",
+    address: "",
+    instagram: "",
+    tiktok: "",
+  })
+  const token = useSelector((state) => state.auth.token);
+
+  const [errors, setErrors] = useState({});
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
+
+  const validateForm = () => {
+    const newErrors = {};
+    if (!form.firstName) newErrors.firstName = 'Prénom est requis';
+    if (!form.lastName) newErrors.lastName = 'Nom est requis';
+    if (!form.email) newErrors.email = 'E-mail est requis';
+    if (!form.telephone) newErrors.telephone = 'Numéro de téléphone est requis';
+    if (!form.subject) newErrors.subject = 'Objet est requis';
+    if (!form.message) newErrors.message = 'Message est requis';
+    setErrors(newErrors);
+
+    return Object.keys(newErrors).length === 0;
+  };
   
   const sendForm = async () => {
+    if (!validateForm()) return;
+
     const res = await sendEmail(form);
 
     if(res.message === 'Email sent successfully') {
@@ -44,7 +73,46 @@ function Contact() {
     fetchData();
   },[]);
 
-  
+  const handleChangeEdit = (e) => {
+    setFormEdit({ ...formEdit, [e.target.name]: e.target.value });
+  };
+
+  const openPopup = () => {
+    setPopup(true);
+    setFormEdit({
+      title: contact.title,
+      description: contact.description,
+      telephone: contact.telephone,
+      email: contact.email,
+      address: contact.address,
+      instagram: contact.instagram,
+      tiktok: contact.tiktok
+    })
+  }
+
+  const editData = async () => {
+    try {
+      await updateContactSectionData(formEdit, token);
+      const data = await getContactSectionData();
+
+      setContact(data.contact[0]);
+      setPopup(false);
+    } 
+    catch (error) {
+      console.error("Failed to update contact section data:", error);
+    }
+  }
+
+  const closePopup = () => {
+    if(popup === true) {
+      setPopup(false)
+    } 
+    else {
+      setPopup(true)
+    }
+  }
+
+
   return (
     <div className="contact" id="contact">
 
@@ -85,40 +153,110 @@ function Contact() {
                   </a>
                 )}
               </div>
+
+              {dashboard && (
+                  <img src="../images/edit.png" alt="Modifier" className='edit' onClick={openPopup}/>
+              )}
+
+              {dashboard && popup && (
+                  <div className='popup'>
+
+                    <div className='popup--content'>
+                      <img src="../images/close.png" alt="Fermer" onClick={closePopup} className='popup--close'/>
+
+                      <h1 className='popup--title'>Contact</h1>
+                      <div className='input'>
+                        <label>Titre</label>
+                        <input type="text" name="title" value={formEdit.title} onChange={handleChangeEdit}></input>
+                      </div>
+
+                      <div className='input'>
+                        <label>Description</label>
+                        <textarea type="text" name="description" value={formEdit.description} onChange={handleChangeEdit} className='textarea'></textarea>
+                      </div>
+
+                      <div className='input'>
+                        <label>Téléphone</label>
+                        <input type="tel" name="telephone" value={formEdit.telephone} onChange={handleChangeEdit}></input>
+                      </div>
+
+                      <div className='input'>
+                        <label>E-mail</label>
+                        <input type="email" name="email" value={formEdit.email} onChange={handleChangeEdit}></input>
+                      </div>
+
+                      <div className='input'>
+                        <label>Adresse</label>
+                        <input type="text" name="address" value={formEdit.address} onChange={handleChangeEdit}></input>
+                      </div>
+
+                      <div className='input'>
+                        <label>Lien d'Instagram</label>
+                        <input type="text" name="instagram" value={formEdit.instagram} onChange={handleChangeEdit}></input>
+                      </div>
+
+                      <div className='input'>
+                        <label>Lien de Tiktok</label>
+                        <input type="text" name="tiktok" value={formEdit.tiktok} onChange={handleChangeEdit}></input>
+                      </div>
+
+                      <button className='popup--btn' onClick={editData}>Valider</button>
+                    </div>
+                  </div>
+              )}
             </div>
 
             <div className="contact--content right">
                 <div className="inputs">
                   <div className="input">
-                    <label>Prénom</label>
-                    <input type="text" name="firstName" value={form.firstName} onChange={handleChange}></input>
+                    <label>Prénom*</label>
+                    <input type="text" name="firstName" value={form.firstName} onChange={handleChange} required></input>
+                    {errors && (
+                      <span className='error-message'>{errors.firstName}</span>
+                    )}
                   </div>
                   
                   <div className="input input-nomargin">
-                    <label>Nom</label>
-                    <input type="text" name="lastName" value={form.lastName} onChange={handleChange}></input>
+                    <label>Nom*</label>
+                    <input type="text" name="lastName" value={form.lastName} onChange={handleChange} required></input>
+                    {errors && (
+                      <span className='error-message'>{errors.lastName}</span>
+                    )}
                   </div>
                 </div>
 
                 <div className="inputs">
                   <div className="input">
-                    <label>Email</label>
-                    <input type="email" name="email" value={form.email} onChange={handleChange}></input>
+                    <label>E-mail*</label>
+                    <input type="email" name="email" value={form.email} onChange={handleChange} required></input>
+                    {errors && (
+                      <span className='error-message'>{errors.email}</span>
+                    )}
                   </div>
                   
                   <div className="input input-nomargin">
-                    <label>Numéro de téléphone</label>
-                    <input type="tel" name="telephone" placeholder="+33680201422" value={form.telephone} onChange={handleChange}></input>
+                    <label>Numéro de téléphone*</label>
+                    <input type="tel" name="telephone" placeholder="+33680201422" value={form.telephone} onChange={handleChange} required></input>
+                    {errors && (
+                      <span className='error-message'>{errors.telephone}</span>
+                    )}
                   </div>
                 </div>
               
                 <div className="input">
-                  <label>Object</label>
-                  <input type="text" name="subject" value={form.subject} onChange={handleChange}></input>
+                  <label>Object*</label>
+                  <input type="text" name="subject" value={form.subject} onChange={handleChange} required></input>
+                  {errors && (
+                      <span className='error-message'>{errors.subject}</span>
+                    )}
                 </div>
+
                 <div className="input">
-                  <label>Message</label>
-                  <input type="text" name="message" value={form.message} onChange={handleChange}></input>
+                  <label>Message*</label>
+                  <input type="text" name="message" value={form.message} onChange={handleChange} required></input>
+                  {errors && (
+                      <span className='error-message'>{errors.message}</span>
+                    )}
                 </div>
                 
                 <div className='confirm-container'>
@@ -136,37 +274,56 @@ function Contact() {
             <p className="contact--content--description">{contact.description}</p>
 
             <div className="inputs">
-                <div className="input">
-                  <label>Prénom</label>
-                  <input type="text" name="firstName" value={form.firstName} onChange={handleChange}></input>
+                  <div className="input">
+                    <label>Prénom*</label>
+                    <input type="text" name="firstName" value={form.firstName} onChange={handleChange} required></input>
+                    {errors && (
+                      <span className='error-message'>{errors.firstName}</span>
+                    )}
+                  </div>
+                  
+                  <div className="input input-nomargin">
+                    <label>Nom*</label>
+                    <input type="text" name="lastName" value={form.lastName} onChange={handleChange} required></input>
+                    {errors && (
+                      <span className='error-message'>{errors.lastName}</span>
+                    )}
+                  </div>
                 </div>
-                
-                <div className="input input-nomargin">
-                  <label>Nom</label>
-                  <input type="text" name="lastName" value={form.lastName} onChange={handleChange}></input>
-                </div>
-              </div>
 
-              <div className="inputs">
+                <div className="inputs">
+                  <div className="input">
+                    <label>E-mail*</label>
+                    <input type="email" name="email" value={form.email} onChange={handleChange} required></input>
+                    {errors && (
+                      <span className='error-message'>{errors.email}</span>
+                    )}
+                  </div>
+                  
+                  <div className="input input-nomargin">
+                    <label>Numéro de téléphone*</label>
+                    <input type="tel" name="telephone" placeholder="+33680201422" value={form.telephone} onChange={handleChange} required></input>
+                    {errors && (
+                      <span className='error-message'>{errors.telephone}</span>
+                    )}
+                  </div>
+                </div>
+              
                 <div className="input">
-                  <label>Email</label>
-                  <input type="email" name="email" value={form.email} onChange={handleChange}></input>
+                  <label>Object*</label>
+                  <input type="text" name="subject" value={form.subject} onChange={handleChange} required></input>
+                  {errors && (
+                      <span className='error-message'>{errors.subject}</span>
+                    )}
                 </div>
-                
-                <div className="input input-nomargin">
-                  <label>Numéro de téléphone</label>
-                  <input type="tel" name="telephone" placeholder="+33680201422" value={form.telephone} onChange={handleChange}></input>
+
+                <div className="input">
+                  <label>Message*</label>
+                  <input type="text" name="message" value={form.message} onChange={handleChange} required></input>
+                  {errors && (
+                      <span className='error-message'>{errors.message}</span>
+                    )}
                 </div>
-              </div>
-            
-              <div className="input">
-                <label>Object</label>
-                <input type="text" name="subject" value={form.subject} onChange={handleChange}></input>
-              </div>
-              <div className="input">
-                <label>Message</label>
-                <input type="text" name="message" value={form.message} onChange={handleChange}></input>
-              </div>
               
               <div className='confirm-container'>
                 <button className="confirm" onClick={sendForm}>Confirmer</button>
@@ -201,6 +358,57 @@ function Contact() {
                     </a>
                   )}
                 </div>
+
+                {dashboard && (
+                  <img src="../images/edit.png" alt="Modifier" className='edit edit--contact' onClick={openPopup}/>
+                )}
+
+                {dashboard && popup && (
+                    <div className='popup'>
+
+                      <div className='popup--content'>
+                        <img src="../images/close.png" alt="Fermer" onClick={closePopup} className='popup--close'/>
+
+                        <h1 className='popup--title'>Contact</h1>
+                        <div className='input'>
+                          <label>Titre</label>
+                          <input type="text" name="title" value={formEdit.title} onChange={handleChangeEdit}></input>
+                        </div>
+
+                        <div className='input'>
+                          <label>Description</label>
+                          <textarea type="text" name="description" value={formEdit.description} onChange={handleChangeEdit} className='textarea'></textarea>
+                        </div>
+
+                        <div className='input'>
+                          <label>Téléphone</label>
+                          <input type="tel" name="telephone" value={formEdit.telephone} onChange={handleChangeEdit}></input>
+                        </div>
+
+                        <div className='input'>
+                          <label>E-mail</label>
+                          <input type="email" name="email" value={formEdit.email} onChange={handleChangeEdit}></input>
+                        </div>
+
+                        <div className='input'>
+                          <label>Adresse</label>
+                          <input type="text" name="address" value={formEdit.address} onChange={handleChangeEdit}></input>
+                        </div>
+
+                        <div className='input'>
+                          <label>Lien d'Instagram</label>
+                          <input type="text" name="instagram" value={formEdit.instagram} onChange={handleChangeEdit}></input>
+                        </div>
+
+                        <div className='input'>
+                          <label>Lien de Tiktok</label>
+                          <input type="text" name="tiktok" value={formEdit.tiktok} onChange={handleChangeEdit}></input>
+                        </div>
+
+                        <button className='popup--btn' onClick={editData}>Valider</button>
+                      </div>
+                    </div>
+                )}
               </div>
           </div>
         </div>

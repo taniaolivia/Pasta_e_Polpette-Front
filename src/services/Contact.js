@@ -7,8 +7,13 @@ export const getContactSectionData = async () => {
     return res.data;
 }
 
-export const  updateContactSectionData = async(contact) => {
-    const res = await axios.patch(`${apiUrl}/contact`, contact, {new: true});
+export const  updateContactSectionData = async(contact, token) => {
+    const res = await axios.patch(`${apiUrl}/contact`, contact, {
+        new: true,
+        headers: {
+            'Authorization': token
+        }
+    });
     return res.data;
 }
 

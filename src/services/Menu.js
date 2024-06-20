@@ -7,8 +7,13 @@ export const getMenuSectionData = async () => {
     return res.data;
 }
 
-export const  updateMenuSectionData = async(menu) => {
-    const res = await axios.patch(`${apiUrl}/menu`, menu, {new: true});
+export const  updateMenuSectionData = async(menu, token) => {
+    const res = await axios.patch(`${apiUrl}/menu`, menu, {
+        new: true,
+        headers: {
+            'Authorization': token
+        }
+    });
     return res.data;
 }
 

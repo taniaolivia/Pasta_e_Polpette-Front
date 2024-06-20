@@ -7,7 +7,14 @@ export const getBannerSectionData = async () => {
     return res.data;
 }
 
-export const  updateBannerSectionData = async(banner) => {
-    const res = await axios.patch(`${apiUrl}/banner`, banner, {new: true});
+export const  updateBannerSectionData = async(description, token) => {
+    const res = await axios.patch(`${apiUrl}/banner`, { description }, {
+        new: true,
+        headers: {
+            'Authorization': token
+        }
+    });
+    console.log("resss")
+    console.log(res.data)
     return res.data;
 }
