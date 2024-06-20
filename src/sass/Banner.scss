@@ -7,15 +7,19 @@
   position: relative;
   font-family: 'Montserrat';
 
+  @media screen and (max-width: 799px) {
+    padding: 0;
+  }
+
 }
 
 .editB {
   position: absolute;
-  bottom: 12em;
-  right: 27em;
+  bottom: 11.2em;
+  left: 0.5em;
   cursor: pointer;
   width: 100%;
-  max-width: 45px;
+  max-width: 35px;
   height: auto;
 
   &--contact{
@@ -29,11 +33,12 @@
 
 .editDes {
   position: absolute;
-  top: 16em;
-  right: 29em;
+  top: 17.5em;
+  left: 0.5em;
   width: 100%;
-  max-width: 45px;
+  max-width: 35px;
   height: auto;
+  cursor: pointer;
 }
 
 .editContact {
@@ -210,14 +215,11 @@
   .editB {
     position: absolute;
     bottom: 10em;
-    right: 18em;
+    left: 3em;
     cursor: pointer;
     width: 100%;
     max-width: 45px;
     height: auto;
-  
-    
-    
   }
 
   .banner {
@@ -289,17 +291,13 @@
 
   .editDes {
     position: absolute;
-    top: 17em;
-    right: 9em;
-
+    top: 18em;
+    left: 2em;
     cursor: pointer;
     width: 100%;
     max-width: 45px;
     height: auto;
   }
-
-
-
 
   .editContact {
     position: absolute;

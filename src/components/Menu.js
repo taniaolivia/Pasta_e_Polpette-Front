@@ -73,7 +73,7 @@ function Menu({dashboard}) {
         )}
 
         {dashboard && popup && (
-            <div className='popup' onClick={closePopup}>
+            <div className='popup'>
               <div className='popup--content'>
                 <img src="../images/close.png" alt="Fermer" onClick={closePopup} className='popup--close'/>
 

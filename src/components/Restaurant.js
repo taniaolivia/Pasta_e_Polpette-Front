@@ -26,7 +26,6 @@ function Restaurant({ dashboard }) {
     const token = useSelector((state) => state.auth.token);
 
     const [form, setForm] = useState({
-
         name: '',
         address: '',
         telephone: '',
@@ -36,6 +35,7 @@ function Restaurant({ dashboard }) {
         latitude: 0.0,
         longitude: 0.0
     })
+    
     const openUberEats = () => {
         window.open("https://www.ubereats.com/fr/store/pasta-e-polpette/q7J4GZ6zSkabzhJc0CMoFQ", "_blank");
     }
@@ -138,7 +138,7 @@ function Restaurant({ dashboard }) {
                 <div className="restaurant--contents">
                     <div className="restaurant--content left">
                         <div className="map-container">
-                            <MapContainer center={position} zoom={10} style={{ height: "500px", width: "500px" }}>
+                            <MapContainer center={position} zoom={10} style={{ height: "300px", width: "100%" }}>
                                 <TileLayer
                                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -156,31 +156,31 @@ function Restaurant({ dashboard }) {
                         <p className="restaurant--title">{name}</p>
 
                         <div className="restaurant--content--info">
-                            <div className="tel contact--icon--text">
-                                <p>{address}</p>
+                            <div className="tel">
+                                {address}
                             </div>
                         </div>
 
                         <div className="restaurant--content--info">
-                            <div className="email contact--icon--text">{access}</div>
+                            <div className="email">{access}</div>
                         </div>
 
                         <div className="restaurant--content--info">
-                            <div className="tel contact--icon--text">
-                                <p>{schedule}</p>
+                            <div className="tel">
+                                {schedule}
                             </div>
                         </div>
 
                         {telephone && (
                             <div className="restaurant--content--info">
-                                <div className="tel contact--icon--text">
+                                <div className="tel">
                                     {telephone}
                                 </div>
                             </div>
                         )}
 
                         <div className="restaurant--content--info">
-                            <div className="email contact--icon--text">
+                            <div className="email">
                                 {email}
                             </div>
                         </div>
@@ -220,30 +220,30 @@ function Restaurant({ dashboard }) {
                     <p className="restaurant--title">{name}</p>
 
                     <div className="restaurant--content--info">
-                        <div >
-                            <p>{address}</p>
+                        <div className="email">
+                            {address}
                         </div>
                     </div>
 
-                    <div >
+                    <div className="restaurant--content--info">
                         <div className="email restaurant--icon--text">{access}</div>
                     </div>
 
                     <div className="restaurant--content--info">
-                        <div >
-                            <p>{schedule}</p>
+                        <div className="email">
+                            {schedule}
                         </div>
                     </div>
                     {telephone && (
                         <div className="restaurant--content--info">
-                            <div className="tel contact--icon--text">
+                            <div className="email">
                                 {telephone}
                             </div>
                         </div>
                     )}
 
                     <div className="restaurant--content--info">
-                        <div className="email contact--icon--text">
+                        <div className="email">
                             {email}
                         </div>
                     </div>
@@ -296,11 +296,11 @@ function Restaurant({ dashboard }) {
                             <input type="text" name="schedule" value={form.schedule} onChange={handleChange}></input>
                         </div>
                         <div className='input'>
-                            <label>Telephone</label>
+                            <label>Téléphone</label>
                             <input type="text" name="telephone" value={form.telephone} onChange={handleChange}></input>
                         </div>
                         <div className='input'>
-                            <label>Email</label>
+                            <label>E-mail</label>
                             <input type="text" name="email" value={form.email} onChange={handleChange}></input>
                         </div>
                         <div className='input'>

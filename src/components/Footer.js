@@ -34,16 +34,20 @@ function Footer() {
                                 <span className="footer--subtitle">Les Pasta Lovers, les vrais !</span>
                                 
                                 <div className="button-group">
-                                    {contact.instagram && (
-                                        <a href={contact.instagram} target='_blank' rel="noreferrer">
-                                            <img src="../images/SocialInsta.png" alt="Instagram" className="footer--icon" draggable={false}/>
-                                        </a>
+                                    {contact && (
+                                        contact.instagram && (
+                                            <a href={contact.instagram} target='_blank' rel="noreferrer">
+                                                <img src="../images/SocialInsta.png" alt="Instagram" className="footer--icon" draggable={false}/>
+                                            </a>
+                                        )
                                     )}
-
-                                    {contact.tiktok && (
-                                        <a href={contact.tiktok} target='_blank' rel="noreferrer">
-                                            <img src="../images/tiktokFot.png" alt="TikTok" className="footer--icon" draggable={false}/>
-                                        </a>
+                                    
+                                    {contact && (
+                                        contact.tiktok && (
+                                            <a href={contact.tiktok} target='_blank' rel="noreferrer">
+                                                <img src="../images/tiktokFot.png" alt="TikTok" className="footer--icon" draggable={false}/>
+                                            </a>
+                                        )
                                     )}
                                 </div>
                             </div>
@@ -90,7 +94,7 @@ function Footer() {
                 </div>
             </div>)}
 
-            {contact && (<div className="mobile">
+            <div className="mobile">
                 <div className="container">
                     <div className="row">
                         <img src="../images/apple.png" alt="Apple" className="apple" draggable={false}/>
@@ -122,19 +126,21 @@ function Footer() {
                             </ul>
 
                             <div className="row1">
-                                <div className="button-group nomarginTop">
-                                    {contact.instagram && (
-                                        <a href={contact.instagram} target='_blank' rel="noreferrer">
-                                            <img src="../images/SocialInsta.png" alt="Instagram" className="footer--icon" draggable={false}/>
-                                        </a>
-                                    )}
+                                {contact && (
+                                    <div className="button-group nomarginTop">
+                                        {contact.instagram && (
+                                            <a href={contact.instagram} target='_blank' rel="noreferrer">
+                                                <img src="../images/SocialInsta.png" alt="Instagram" className="footer--icon" draggable={false}/>
+                                            </a>
+                                        )}
 
-                                    {contact.tiktok && (
-                                        <a href={contact.tiktok} target='_blank' rel="noreferrer">
-                                            <img src="../images/tiktokFot.png" alt="TikTok" className="footer--icon" draggable={false}/>
-                                        </a>
-                                    )}
-                                </div>
+                                        {contact.tiktok && (
+                                            <a href={contact.tiktok} target='_blank' rel="noreferrer">
+                                                <img src="../images/tiktokFot.png" alt="TikTok" className="footer--icon" draggable={false}/>
+                                            </a>
+                                        )}
+                                    </div>
+                                )}
                                 <div className="order-button">
                                     <button>Commander</button>
                                 </div>
@@ -150,7 +156,7 @@ function Footer() {
                         </p>
                     </div>
                 </div>
-            </div>)}
+            </div>
         </div>);
 }
 

@@ -136,8 +136,6 @@ function Banner({ dashboard }) {
                     <img src="../images/Orange.png" alt="Orange" draggable={false} />
                 </div>
 
-
-
                 <div className="image-wrapper orange-mobile mobile">
                     <img src="../images/Orange.png" alt="Orange" draggable={false} />
                 </div>
@@ -194,13 +192,6 @@ function Banner({ dashboard }) {
                         <button className="btn discover-btn" onClick={openUberEats}>Découvrir</button>
 
                         <div className="btn-mob">
-                            <button className="btn icon-btn">
-                                <img src="../images/instgram.png" alt="Instagram" className="icon" draggable={false} />
-                            </button>
-
-                            <button className="btn icon-btn">
-                                <img src="../images/tiktok.png" alt="TikTok" className="icon" draggable={false} />
-                            </button>
                             {contact && (
                                 <a href={contact.instagram} target='_blank' rel="noreferrer">
                                     <button className="btn icon-btn">
@@ -267,11 +258,11 @@ function Banner({ dashboard }) {
 
                         <h1 className='popup--title'>Contact</h1>
                         <div className='input'>
-                            <label>instagram</label>
+                            <label>Lien d'Instagram</label>
                             <input type="text" name="instagram" value={formContact.instagram} onChange={handleChangeContact}></input>
                         </div>
                         <div className='input'>
-                            <label>tiktok</label>
+                            <label>Lien de Tiktok</label>
                             <input type="text" name="tiktok" value={formContact.tiktok} onChange={handleChangeContact}></input>
                         </div>
 
