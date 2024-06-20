@@ -71,18 +71,20 @@ function Concept({dashboard}) {
 
         {dashboard && popup && (
             <div className='popup'>
-              <h1>Concept</h1>
-              <div className='input'>
-                <label>Titre</label>
-                <input type="text" name="title" value={form.title} onChange={handleChange}></input>
-              </div>
+              <div className='popup--content'>
+                <h1 className='popup--title'>Concept</h1>
+                <div className='input'>
+                  <label>Titre</label>
+                  <input type="text" name="title" value={form.title} onChange={handleChange}></input>
+                </div>
 
-              <div className='input'>
-                <label>Description</label>
-                <input type="text" name="description" value={form.description} onChange={handleChange}></input>
-              </div>
+                <div className='input'>
+                  <label>Description</label>
+                  <input type="text" name="description" value={form.description} onChange={handleChange}></input>
+                </div>
 
-              <button className='popup--btn'></button>
+                <button className='popup--btn'>Valider</button>
+              </div>
             </div>
         )}
     </div>
