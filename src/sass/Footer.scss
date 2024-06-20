@@ -224,6 +224,8 @@
         flex-grow: 1;
         text-align: center;
         margin-left: 0.85em;
+        position: relative;
+        z-index: 5;
     
         ul {
           list-style: none;
