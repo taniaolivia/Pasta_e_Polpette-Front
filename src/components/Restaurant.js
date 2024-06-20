@@ -43,7 +43,7 @@ function Restaurant({dashboard}) {
     if (!restaurant) {
         return <div>Loading...</div>
     }
-    const { title, name, address, access, schedule, latitude, langitude } = restaurant;
+    const { title, name, address, access, schedule, latitude, langitude, telephone, email } = restaurant;
     const position = [latitude, langitude];
 
     return (
@@ -94,6 +94,20 @@ function Restaurant({dashboard}) {
                         <div className="restaurant--content--info">
                             <div className="tel contact--icon--text">
                                 <p>{schedule}</p>
+                            </div>
+                        </div>
+
+                        {telephone && (
+                            <div className="restaurant--content--info">
+                                <div className="tel contact--icon--text">
+                                    {telephone}
+                                </div>
+                            </div>
+                        )}
+
+                        <div className="restaurant--content--info">
+                            <div className="email contact--icon--text">
+                                {email}
                             </div>
                         </div>
 
