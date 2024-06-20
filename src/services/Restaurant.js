@@ -7,7 +7,13 @@ export const getRestaurantSectionData = async () => {
     return res.data;
 }
 
-export const  updateRestaurantSectionData = async(rest) => {
-    const res = await axios.patch(`${apiUrl}/restaurant`, rest, {new: true});
+export const  updateRestaurantSectionData = async(rest,token) => {
+    const res = await axios.patch(`${apiUrl}/restaurant`, rest,
+         {new: true,
+            headers: {
+                'Authorization': token
+            }
+
+         });
     return res.data;
 }

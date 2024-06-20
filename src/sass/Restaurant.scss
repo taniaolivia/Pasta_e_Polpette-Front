@@ -16,6 +16,22 @@
         color: #ED1F24;
     }
 
+    
+
+    .editContact  {
+        position: absolute;
+        bottom: 1em;
+        right: 2em;
+        top: 43em;
+        cursor: pointer;
+        width: 100%;
+        max-width: 45px;
+        height: auto;
+    
+        
+        
+    }
+
     &--description {
         color: #191919;
         width: 75%;
@@ -298,6 +314,18 @@
             display: block;
             text-align: center;
             /* Centrer le contenu */
+            
+        }
+
+        .editContact {
+            position: absolute;
+            bottom: 1em;
+            right: 3em;
+            top: 56em;
+            cursor: pointer;
+            width: 100%;
+            max-width: 45px;
+            height: auto;
         }
 
         .map-container {
@@ -330,6 +358,8 @@
             justify-content: center;
             font-size: 1em;
         }
+
+       
 
         .bl {
             width: 100%;

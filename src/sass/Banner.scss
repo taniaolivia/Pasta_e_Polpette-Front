@@ -1,13 +1,46 @@
 .banner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 20px 0 20px;
-    flex-wrap: wrap; 
-    position: relative;
-    font-family: 'Montserrat';
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px 0 20px;
+  flex-wrap: wrap;
+  position: relative;
+  font-family: 'Montserrat';
 
-} 
+}
+
+.editB {
+  position: absolute;
+  bottom: 12em;
+  right: 27em;
+  cursor: pointer;
+  width: 100%;
+  max-width: 45px;
+  height: auto;
+
+  &--contact{
+      @media screen and (max-width: 799px) {
+          bottom: 0;
+          right: 0;
+      }
+  }
+  
+}
+
+.editDes {
+  position: absolute;
+  top: 16em;
+  right: 29em;
+  width: 100%;
+  max-width: 45px;
+  height: auto;
+}
+
+.editContact {
+  position: absolute;
+  top: 21em;
+  right: 109em;
+}
 
 .text-container {
   flex: 1;
@@ -37,7 +70,7 @@
   flex-direction: row;
   align-items: center;
 }
-  
+
 .image-wrapper {
   text-align: center;
 }
@@ -167,11 +200,11 @@
 /* Media Queries for Responsiveness */
 @media screen and (max-width: 799px) {
   .desktop {
-      display: none;
+    display: none;
   }
 
   .mobile {
-      display: block;
+    display: block;
   }
 
   .banner {
@@ -215,7 +248,7 @@
   .image-container2 {
     flex-direction: column;
     align-items: center;
-    margin-bottom: 20px;  
+    margin-bottom: 20px;
   }
 
   .second-image {
@@ -234,10 +267,35 @@
     margin-bottom: 42px;
   }
 
-  .btn-mob{
+  .btn-mob {
     display: flex;
     flex-direction: row;
     margin-top: 22px;
     justify-content: space-around;
+  }
+
+  .editDes {
+    position: absolute;
+    top: 17em;
+    right: 9em;
+
+    cursor: pointer;
+    width: 100%;
+    max-width: 45px;
+    height: auto;
+  }
+
+
+
+
+  .editContact {
+    position: absolute;
+    top: 33em;
+    right: 19em;
+
+    cursor: pointer;
+    width: 100%;
+    max-width: 45px;
+    height: auto;
   }
 }
