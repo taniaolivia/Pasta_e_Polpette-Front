@@ -1,0 +1,345 @@
+.restaurant {
+    font-family: "Montserrat";
+    position: relative;
+    margin: 3em 0;
+    overflow: hidden;
+
+    &--text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 4em 2em 6em 2em;
+    }
+
+    .red {
+        color: #ED1F24;
+    }
+
+    &--description {
+        color: #191919;
+        width: 75%;
+        text-align: justify;
+    }
+
+    &--title {
+        font-family: "Rum Raisin";
+        margin-left: 1.5em;
+        display: flex;
+        justify-content: center;
+        font-size: 2em;
+    }
+
+    &--fleur {
+        width: 100%;
+        max-width: 80px;
+        height: auto;
+        position: absolute;
+        top: 21%;
+        left: 73em;
+    }
+
+    &--boulle {
+        width: 100%;
+        max-width: 140px;
+        height: auto;
+        position: absolute;
+        top: 75%;
+        left: 68em;
+    }
+
+    .map-container {
+        height: 400px;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+
+    .order-button {
+        button {
+            font-family: "Rum Raisin";
+            background-color: #fff;
+            color: #ff0000;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-bottom: 10px;
+
+            &:hover {
+                background-color: #fff;
+            }
+        }
+    }
+
+    &--rosemary {
+        width: 100%;
+        max-width: 80px;
+        height: auto;
+        position: absolute;
+        top: 99%;
+        left: 31em;
+    }
+
+    &--meatball {
+        position: absolute;
+        bottom: 1em;
+        right: 0;
+        width: 100%;
+        max-width: 100px;
+        height: auto;
+    }
+
+    &--rest {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        max-width: 200px;
+        height: auto;
+        left: -2em;
+    }
+
+
+    &--title {
+        font-family: "Rum Raisin";
+        margin-left: 1.5em;
+
+        @media screen and (max-width: 799px) {
+            margin-left: 0.8em;
+        }
+    }
+
+    &--contents {
+        display: flex;
+        flex-direction: row;
+    }
+
+    &--content {
+
+        @media screen and (max-width: 799px) {
+            width: 87%;
+            margin: auto;
+        }
+
+        &--title {
+            font-weight: 700;
+            font-size: 1.2em;
+        }
+
+        &--description {
+            font-weight: bold;
+            font-size: 0.85em;
+            text-align: justify;
+            margin-bottom: 7em;
+
+            @media screen and (max-width: 799px) {
+                margin-bottom: 3em;
+                font-weight: normal;
+            }
+        }
+
+        &--info {
+            font-weight: bold;
+            font-size: 0.9em;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-top: 3em;
+
+            @media screen and (max-width: 799px) {
+                margin-top: 2em;
+                font-weight: normal;
+            }
+        }
+    }
+
+    input {
+        font-family: "Montserrat";
+        border: none;
+        border-bottom: 1px solid #8D8D8D;
+
+        &:focus {
+            outline: none;
+            border-bottom: 1px solid #000000;
+        }
+    }
+
+    .inputs {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+
+        @media screen and (max-width: 320px) {
+            max-width: 120px;
+        }
+    }
+
+    .input-nomargin {
+        margin-right: 0 !important;
+    }
+
+    .input {
+        display: flex;
+        flex-direction: column;
+        margin-right: 3em;
+        margin-bottom: 3em;
+        width: 100%;
+
+        @media screen and (max-width: 799px) {
+            margin-right: 2em;
+            margin-bottom: 2em;
+        }
+    }
+
+    label {
+        color: #8D8D8D;
+        font-size: 0.8em;
+        margin-bottom: 1em;
+
+        @media screen and (max-width: 799px) {
+            font-size: clamp(10px, 3vw, 15px);
+        }
+    }
+
+    &--icon {
+        width: 100%;
+        max-width: 25px;
+        height: auto;
+
+        &--text {
+            margin-left: 1em;
+        }
+    }
+
+    .instagram {
+        margin-right: 1em;
+        cursor: pointer;
+    }
+
+    .socialMedia {
+        display: flex;
+        flex-direction: row;
+        margin-top: 7em;
+        margin-bottom: 1em;
+
+        @media screen and (max-width: 799px) {
+            margin-top: 3em;
+            margin-bottom: 0;
+        }
+    }
+
+    .left {
+        background-color: white;
+        color: white;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        padding: 1em 3em;
+        width: 35%;
+    }
+
+    .right {
+        background-color: #ED1F24;
+        color: white;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 50%;
+        padding: 0 4em;
+    }
+
+    .confirm {
+        background-color: #ED1F24;
+        color: white;
+        width: 100%;
+        max-width: 250px;
+        height: auto;
+        padding: 1em 1em;
+        border: none;
+        border-radius: 8px;
+        font-weight: bold;
+        font-family: "Montserrat";
+        font-size: 1.1em;
+        cursor: pointer;
+
+        @media screen and (max-width: 799px) {
+            font-size: clamp(10px, 4vw, 15px);
+            max-width: 200px;
+            margin-bottom: 2em;
+        }
+
+        &:hover {
+            background-color: #b8181b;
+        }
+    }
+
+    .confirm-container {
+        display: flex;
+        justify-content: right;
+    }
+
+    .desktop {
+        display: block;
+
+        @media screen and (max-width: 799px) {
+            display: none;
+        }
+    }
+
+    .mobile {
+        display: none;
+
+        @media screen and (max-width: 799px) {
+            display: block;
+            text-align: center;
+            /* Centrer le contenu */
+        }
+
+        .map-container {
+            height: 300px;
+            /* Hauteur de la carte */
+            width: 100%;
+            margin: 0 auto;
+            /* Centrer horizontalement */
+        }
+
+        .right {
+            background-color: #ED1F24;
+            color: white;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 50%;
+            padding: 0 4em;
+            margin-top: 42px;
+        }
+
+        .restaurant--title {
+            font-family: "Rum Raisin";
+            margin-left: 1.5em;
+            display: flex;
+            justify-content: center;
+            font-size: 1em;
+        }
+
+        .bl {
+            width: 100%;
+            max-width: 66px;
+            height: auto;
+            position: absolute;
+            left: 67%;
+            top: 89%;
+
+        }
+    }
+
+
+}

@@ -9,6 +9,7 @@ import Footer from './components/Footer'
 import Contact from './components/Contact';
 import Menu from './components/Menu';
 import MenuCarousel from './components/MenuCarousel';
+import Restaurant from './components/Restaurant';
 import MentionLegales from './components/MentionLegales';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
@@ -23,6 +24,7 @@ function Home() {
       <Concept dashboard={false}></Concept>
       <Menu dashboard={false}></Menu>
       <MenuCarousel dashboard={false}></MenuCarousel>
+      <Restaurant dashboard={false}></Restaurant>
       <Contact dashboard={false}></Contact>
       <Footer></Footer>
     </div>
