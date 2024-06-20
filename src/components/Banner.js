@@ -46,7 +46,7 @@ function Banner() {
                     </div>
                 </div>
 
-                <p>""</p>
+                <p>{banner.descriptions}</p>
 
                 <div className="desktop">
                     <div className="button-group">
