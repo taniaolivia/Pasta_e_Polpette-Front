@@ -5,9 +5,13 @@ import Footer from './components/Footer'
 import Contact from './components/Contact';
 import Menu from './components/Menu';
 import MenuCarousel from './components/MenuCarousel';
+import MentionLegales from './components/MentionLegales';
+import Login from './components/Login';
+import Dashboard from './components/Dashboard';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './sass/App.scss';
 
-function App() {
+function Home() {
   return (
     <div className="app">
       <Header></Header>
@@ -18,6 +22,19 @@ function App() {
       <Contact></Contact>
       <Footer></Footer>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/mentions-legales" element={<MentionLegales />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+    </Router>
   );
 }
 

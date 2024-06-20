@@ -1,58 +1,69 @@
 function Footer() {
+    const openUberEats= () => {
+        window.open("https://www.ubereats.com/fr/store/pasta-e-polpette/q7J4GZ6zSkabzhJc0CMoFQ", "_blank");
+    }
+
     return (
         <div className="footer">
             <div className="desktop">
                 <div className=" row">
                     <div className="container">
                         <div className="row">
-                            <div className="laye">
-                                <img src="../images/laye.png" alt="laye" />
-                            </div>
-                            <div className="container">
-                                <div className="row"><p>Paste e Polpette</p></div>
-                                <div className="row">Les Pasta Lovers, les vrais !</div>
-                                <div className="button-group">
+                            <img src="../images/apple.png" alt="Apple" className="apple" draggable={false}/>
 
-                                    <button className="btn icon-btn">
-                                        <img src="../images/SocialInsta.png" alt="Instagram" className="icon" />
-                                    </button>
-                                    <button className="btn icon-btn">
-                                        <img src="../images/tiktokFot.png" alt="TikTok" className="icon" />
-                                    </button>
+                            <div className="container">
+                                <h1 className="footer--title">Paste e Polpette</h1>
+                                
+                                <span className="footer--subtitle">Les Pasta Lovers, les vrais !</span>
+                                
+                                <div className="button-group">
+                                    <a href="https://www.instagram.com/pastaepolpette_fr/" target='_blank' rel="noreferrer">
+                                        <img src="../images/SocialInsta.png" alt="Instagram" className="footer--icon" draggable={false}/>
+                                    </a>
+
+                                    <a href="https://www.instagram.com/pastaepolpette_fr/" target='_blank' rel="noreferrer">
+                                        <img src="../images/tiktokFot.png" alt="TikTok" className="footer--icon" draggable={false}/>
+                                    </a>
                                 </div>
                             </div>
-
                         </div>
-
-
                     </div>
+
                     <div className="container">
                         <div className="row">
                             <nav className="navigation">
                                 <ul>
-
-                                    <li><a href="#Mentions">Mentions
-                                        Légales</a></li>
-                                    <li><a href="#Concept">Concept</a></li>
-                                    <li><a href="#Menu">Menu</a></li>
-                                    <li><a href="#Restaurant">Restaurant</a></li>
-                                    <li><a href="#contact">Contact</a></li>
-                                    <li><div className="order-button">
-                                        <button>Commander</button>
-                                    </div></li>
+                                    <li>
+                                        <a href="/mentions-legales">Mentions<br/>Légales</a>
+                                    </li>
+                                    <li>
+                                        <a href="/#concept">Concept</a>
+                                    </li>
+                                    <li>
+                                        <a href="/#menu">Menu</a>
+                                    </li>
+                                    <li>
+                                        <a href="/#restaurant">Restaurant</a>
+                                    </li>
+                                    <li>
+                                        <a href="/#contact">Contact</a>
+                                    </li>
+                                    <li>
+                                        <div className="order-button">
+                                            <button onClick={openUberEats}>Commander</button>
+                                        </div>
+                                    </li>
                                 </ul>
                             </nav>
-                            <div className="footerImage">
-                                <img src="../images/footer.png" alt="footer" />
-                            </div>
+                            
+                            <img src="../images/footer.png" alt="footer" className="footerImage" draggable={false}/>
                         </div>
                     </div>
-
                 </div>
 
 
                 <div className="fl">
-                    <p >
+                    <p>
                         &copy; Pasta E Polpette 2024
                     </p>
                 </div>
@@ -61,46 +72,59 @@ function Footer() {
             <div className="mobile">
                 <div className="container">
                     <div className="row">
+                        <img src="../images/apple.png" alt="Apple" className="apple" draggable={false}/>
+
                         <nav className="navigation">
                             <ul>
-                                <li> <p>Paste e Polpette</p>
+                                <li className="footer--title"> 
+                                    Paste e Polpette
                                 </li>
 
-                                <li><a href="#Mentions">Mentions
-                                    Légales</a></li>
-                                <li><a href="#Concept">Concept</a></li>
-                                <li><a href="#Menu">Menu</a></li>
-                                <li><a href="#Restaurant">Restaurant</a></li>
-                                <li><a href="#contact">Contact</a></li>
-                                <li><p>Les Pasta Lovers, les vrais !</p></li>
-                                
+                                <li>
+                                    <a href="/mentions-legales">Mentions Légales</a>
+                                </li>
+                                <li>
+                                    <a href="/#concept">Concept</a>
+                                </li>
+                                <li>
+                                    <a href="/#menu">Menu</a>
+                                </li>
+                                <li>
+                                    <a href="/#restaurant">Restaurant</a>
+                                </li>
+                                <li>
+                                    <a href="/#contact">Contact</a>
+                                </li>
+                                <li className="footer--subtitle">
+                                    Les Pasta Lovers, les vrais !
+                                </li>
                             </ul>
+
                             <div className="row1">
-                                        <div className="button-group">
+                                <div className="button-group nomarginTop">
+                                    <a href="https://www.instagram.com/pastaepolpette_fr/" target='_blank' rel="noreferrer">
+                                        <img src="../images/SocialInsta.png" alt="Instagram" className="footer--icon" draggable={false}/>
+                                    </a>
 
-                                            <button className="btn icon-btn">
-                                                <img src="../images/SocialInsta.png" alt="Instagram" className="icon" />
-                                            </button>
-                                            <button className="btn icon-btn">
-                                                <img src="../images/tiktokFot.png" alt="TikTok" className="icon" />
-                                            </button>
-                                        </div>
-                                        <div className="order-button">
-                                            <button>Commander</button>
-                                        </div>
-                                    </div>
+                                    <a href="https://www.instagram.com/pastaepolpette_fr/" target='_blank' rel="noreferrer">
+                                        <img src="../images/tiktokFot.png" alt="TikTok" className="footer--icon" draggable={false}/>
+                                    </a>
+                                </div>
+                                <div className="order-button">
+                                    <button>Commander</button>
+                                </div>
+                            </div>
                         </nav>
-                        
 
-
+                        <img src="../images/footer.png" alt="footer" className="footerImage-mobile" draggable={false}/>
                     </div>
-                    <div className="fl">
-                    <p >
-                        &copy; Pasta E Polpette 2024
-                    </p>
-                </div>
-                </div>
 
+                    <div className="fl">
+                        <p>
+                            &copy; Pasta E Polpette 2024
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>);
 }

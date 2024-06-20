@@ -1,14 +1,17 @@
 .contact {
     font-family: "Montserrat";
-    margin: 3em 0; 
+    margin: 3em 0 5em 0; 
     overflow-x: hidden;   
+
+    @media screen and (max-width: 799px) {
+        margin-bottom: 1em;
+    }
 
     &--title {
         font-family: "Rum Raisin";
         margin-left: 1.5em;
 
         @media screen and (max-width: 799px) {
-            margin-left: 0.8em;
         }
     }
 
@@ -18,7 +21,6 @@
     }
 
     &--content {
-
         @media screen and (max-width: 799px) {
             width: 87%;
             margin: auto;
