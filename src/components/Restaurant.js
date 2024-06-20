@@ -24,7 +24,7 @@ function Restaurant({dashboard}) {
     }
 
     const openAvis = () => {
-        window.open("https://www.google.com/maps/place/Pasta%26polpette/@48.8626742,2.3705276,17z/data=!4m17!1m8!3m7!1s0x47e66d0038b1bb4d:0x179d645f9e3fa9f9!2sPasta%26polpette!8m2!3d48.8626742!4d2.3727163!10e4!16s%2Fg%2F11vzcmhtmc!3m7!1s0x47e66d0038b1bb4d:0x179d645f9e3fa9f9!8m2!3d48.8626742!4d2.3727163!9m1!1b1!16s%2Fg%2F11vzcmhtmc?entry=ttu");
+        window.open("https://g.page/r/CfmpP55fZJ0XEBE/review", "_blank");
     }
 
         useEffect(() => {
