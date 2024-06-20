@@ -44,7 +44,7 @@ function Banner() {
                     <img src="../images/pastaefork.png" alt="Deuxième" className="second-image" draggable={false}/>
 
                     <div className="image-wrapper first-image">
-                        <img src="../images/mint.png" alt="Première" draggable={false}/>
+                        <img src="../images/Mint.png" alt="Première" draggable={false}/>
                     </div>
                 </div>
             </div>
@@ -70,7 +70,7 @@ function Banner() {
                 </div>
                 
                 <div className="image-wrapper first-image">
-                    <img src="../images/mint.png" alt="Première" draggable={false}/>
+                    <img src="../images/Mint.png" alt="Première" draggable={false}/>
                 </div>
             </div>
         </div>
