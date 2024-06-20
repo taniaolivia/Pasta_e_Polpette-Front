@@ -17,7 +17,7 @@ function Banner() {
 
             if(data && dataBanner){
                 setContact(data.contact[0])
-                setBanner(dataBanner)
+                setBanner(dataBanner.descriptions)
             }
         };
 
@@ -46,7 +46,7 @@ function Banner() {
                     </div>
                 </div>
 
-                <p>{banner.descriptions}</p>
+                <p>{banner}</p>
 
                 <div className="desktop">
                     <div className="button-group">

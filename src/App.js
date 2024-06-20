@@ -5,6 +5,7 @@ import Footer from './components/Footer'
 import Contact from './components/Contact';
 import Menu from './components/Menu';
 import MenuCarousel from './components/MenuCarousel';
+import Restaurant from './components/Restaurant';
 import MentionLegales from './components/MentionLegales';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
@@ -19,6 +20,7 @@ function Home() {
       <Concept></Concept>
       <Menu></Menu>
       <MenuCarousel></MenuCarousel>
+      <Restaurant></Restaurant>
       <Contact></Contact>
       <Footer></Footer>
     </div>
