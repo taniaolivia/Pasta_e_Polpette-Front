@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { getContactSectionData } from '../services/Contact';
+import { getContactSectionData, sendEmail } from '../services/Contact';
 
 function Contact() {
   const [form, setForm] = useState({
     firstName: "",
     lastName: "",
     email: "",
-    telephone: undefined,
+    telephone: "",
     subject: "",
     message: ""
   })
@@ -15,8 +15,19 @@ function Contact() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
   
-  const sendForm = () => {
-    console.log(form)
+  const sendForm = async () => {
+    const res = await sendEmail(form);
+
+    if(res.message === 'Email sent successfully') {
+      setForm({ 
+        firstName: "",
+        lastName: "",
+        email: "",
+        telephone: "",
+        subject: "",
+        message: ""
+      });
+    }
   }
 
   const [contact, setContact] = useState(null);

@@ -13,6 +13,6 @@ export const  updateContactSectionData = async(contact) => {
 }
 
 export const sendEmail = async(data) => {
-    const res = await axios.patch(`${apiUrl}/contact/sendEmail`, data, {new: true});
+    const res = await axios.post(`${apiUrl}/contact/sendEmail`, data, {new: true});
     return res.data;
 }
