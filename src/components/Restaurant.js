@@ -43,7 +43,7 @@ function Restaurant({dashboard}) {
     if (!restaurant) {
         return <div>Loading...</div>
     }
-    const { title, address, access, schedule, latitude, langitude } = restaurant;
+    const { title, name, address, access, schedule, latitude, langitude } = restaurant;
     const position = [latitude, langitude];
 
     return (
@@ -57,14 +57,14 @@ function Restaurant({dashboard}) {
                 <img src="../images/fleur.png" alt="" className="restaurant--fleur" />
             </div>
             <div>
-                <img src="../images/boulle.png" alt="" className="restaurant--boulle" />
+                <img src="../images/boulle.png" alt="" className="restaurant--boulle desktop" />
             </div>
 
             <div className='desktop'>
-                <div className="contact--contents">
-                    <div className="contact--content left">
+                <div className="restaurant--contents">
+                    <div className="restaurant--content left">
                         <div className="map-container">
-                            <MapContainer center={position} zoom={10} style={{ height: "300px", width: "100%" }}>
+                            <MapContainer center={position} zoom={10} style={{ height: "500px", width: "500px" }}>
                                 <TileLayer
                                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -78,26 +78,26 @@ function Restaurant({dashboard}) {
                         </div>
                     </div>
 
-                    <div className="contact--content right">
-                        <p className="restaurant--title">{title}</p>
+                    <div className="restaurant--content right">
+                        <p className="restaurant--title">{name}</p>
 
-                        <div className="contact--content--info">
+                        <div className="restaurant--content--info">
                             <div className="tel contact--icon--text">
                                 <p>{address}</p>
                             </div>
                         </div>
 
-                        <div className="contact--content--info">
+                        <div className="restaurant--content--info">
                             <div className="email contact--icon--text">{access}</div>
                         </div>
 
-                        <div className="contact--content--info">
+                        <div className="restaurant--content--info">
                             <div className="tel contact--icon--text">
                                 <p>{schedule}</p>
                             </div>
                         </div>
 
-                        <div className="contact--content--info socialMedia">
+                        <div className="restaurant--content--info socialMedia">
                             <div className="order-button">
                                 <button onClick={openUberEats}>Commander</button>
                             </div>
@@ -106,12 +106,11 @@ function Restaurant({dashboard}) {
                                 <button onClick={openAvis}>Donner votre avis</button>
                             </div>
                         </div>
-                    </div>
-
-                    <div>
-                        <img src="../images/rosemary.png" alt="" className="restaurant--rosemary" />
-                    </div>
+                    </div>                    
                 </div>
+
+                <img src="../images/rosemary.png" alt="" className="restaurant--rosemary" />
+
             </div>
 
             <div className='mobile'>
@@ -129,20 +128,20 @@ function Restaurant({dashboard}) {
                     </MapContainer>
                 </div>
 
-                <div className="contact--content right">
+                <div className="restaurant--content right">
                     <p className="restaurant--title">Paste e Polpette Paris</p>
 
-                    <div className="contact--content--info">
+                    <div className="restaurant--content--info">
                         <div >
                             <p>{address}</p>
                         </div>
                     </div>
 
                     <div >
-                        <div className="email contact--icon--text">{access}</div>
+                        <div className="email restaurant--icon--text">{access}</div>
                     </div>
 
-                    <div className="contact--content--info">
+                    <div className="restaurant--content--info">
                         <div >
                             <p>{schedule}</p>
                         </div>
@@ -162,6 +161,8 @@ function Restaurant({dashboard}) {
                     </div>
                 </div>
             </div>
+            <img src="../images/rosemary.png" alt="" className="restaurant--rosemary" />
+
         </div>
     );
 }
